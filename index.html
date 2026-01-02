@@ -1,21 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Toshio Sujino</title>
+  <meta name="description" content="Independent Researcher. Publications on ST Theory and reproductive medicine." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#f9fafb;
+      --line:#e5e7eb;
+      --link:#2563eb;
+      --max: 920px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.65;
+    }
+    header{
+      border-bottom:1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfbfc 100%);
+    }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px; }
+    .top{
+      display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+    }
+    h1{ margin:0; font-size:34px; letter-spacing:-0.02em; }
+    .role{ margin-top:6px; color:var(--muted); }
+    .links{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--line);
+      border-radius:999px; text-decoration:none; color:var(--text);
+      background:#fff;
+    }
+    .pill:hover{ border-color:#cbd5e1; }
+    main{ padding:22px 0 40px; }
+    h2{ font-size:18px; margin:0 0 10px; letter-spacing:-0.01em; }
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1.15fr 0.85fr; }
+    }
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:16px 16px;
+    }
+    .item{
+      padding:12px 0;
+      border-top:1px solid var(--line);
+    }
+    .item:first-child{ border-top:none; padding-top:0; }
+    .item:last-child{ padding-bottom:0; }
+    .title{
+      font-weight:650;
+      margin:0 0 4px;
+    }
+    .meta{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+    }
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    footer{
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      padding:18px 0;
+    }
+    .small{ font-size:14px; color:var(--muted); margin:6px 0 0; }
+  </style>
 </head>
-<body>
-  <h1>Toshio Sujino</h1>
-  <p>Independent Researcher</p>
 
-  <h2>Publications</h2>
-  <ul>
-    <li>
-      Space-Time Unit System (ST Theory) – Zenodo
-    </li>
-    <li>
-      IVF-related publication – Frontiers in Endocrinology
-    </li>
-  </ul>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <h1>Toshio Sujino</h1>
+          <div class="role">Independent Researcher</div>
+          <div class="links">
+            <!-- ↓ URLをあなたのものに差し替えてください -->
+            <a class="pill" href="#" target="_blank" rel="noopener">ORCID</a>
+            <a class="pill" href="#" target="_blank" rel="noopener">Zenodo</a>
+            <a class="pill" href="#" target="_blank" rel="noopener">Frontiers</a>
+            <a class="pill" href="#" target="_blank" rel="noopener">ResearchGate</a>
+          </div>
+          <p class="small">Physics (ST Theory) · Reproductive Medicine · Data Science</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="grid">
+
+        <!-- 左：Research / Publications -->
+        <section class="card">
+          <h2>Publications</h2>
+
+          <div class="item">
+            <p class="title">Space-Time Unit System (ST Theory)</p>
+            <p class="meta">
+              Preprint / dataset on Zenodo.
+              <!-- ↓ Zenodo DOI URLに差し替え -->
+              <a href="#" target="_blank" rel="noopener">View on Zenodo</a>
+            </p>
+          </div>
+
+          <div class="item">
+            <p class="title">IVF-related publication</p>
+            <p class="meta">
+              Article in <i>Frontiers in Endocrinology</i>.
+              <!-- ↓ Frontiers論文URLに差し替え -->
+              <a href="#" target="_blank" rel="noopener">Read article</a>
+            </p>
+          </div>
+        </section>
+
+        <!-- 右：About / Contact -->
+        <aside class="card">
+          <h2>About</h2>
+          <p class="meta" style="margin-top:0;">
+            I work across physics and reproductive medicine, focusing on unit systems and data-driven modeling.
+          </p>
+
+          <div class="item">
+            <p class="title">Links</p>
+            <p class="meta">
+              Add your canonical profiles (ORCID, Google Scholar, etc.) above.
+            </p>
+          </div>
+
+          <div class="item">
+            <p class="title">Contact</p>
+            <p class="meta">
+              If you want, we can add a contact method (email obfuscation / form) later.
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
