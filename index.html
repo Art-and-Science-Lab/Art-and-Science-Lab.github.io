@@ -20,7 +20,7 @@
 
       --hero-bg:#050507;
       --hero-text:#f3f4f6;
-      --hero-muted:#9ca3af;
+      --hero-muted:#b6bcc6;
     }
 
     *{ box-sizing:border-box; }
@@ -77,14 +77,24 @@
       align-items:center;
       gap:8px;
       padding:8px 14px;
-      border:1px solid #1f2933;
+      border:1px solid rgba(255,255,255,.15);
       border-radius:999px;
       text-decoration:none;
-      color:var(--hero-text);
-      background:#0b0d10;
+      color:#e5e7eb;
+    
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.12) 0%,
+        rgba(255,255,255,.04) 100%);
+      backdrop-filter: blur(2px);
+    }
+    
+    .pill:hover{
+      border-color: rgba(255,255,255,.35);
+      background: linear-gradient(180deg,
+        rgba(255,255,255,.18) 0%,
+        rgba(255,255,255,.07) 100%);
     }
 
-    .pill:hover{ border-color:#374151; }
 
     .small{
       font-size:14px;
