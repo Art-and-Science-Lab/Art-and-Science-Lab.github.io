@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>キログラムとアンペア（クーロン）は基本単位ではなかった｜Toshio Sujino</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="SIで基本単位とされるキログラムとアンペア（クーロン）を再定義し、質量と電荷が時空的関係から導かれる構成量であることを示す。ST unitの概要とZenodo論文リンク。" />
+
+  <!-- MathJax (LaTeX rendering) -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#f9fafb;
+      --line:#e5e7eb;
+      --link:#2563eb;
+      --max: 920px;
+
+      --hero-bg:#050507;
+      --hero-text:#f3f4f6;
+      --hero-muted:#b6bcc6;
+
+      --pill-bg1:#f3f4f6;
+      --pill-bg2:#e5e7eb;
+      --pill-text:#111827;
+      --pill-border:#d1d5db;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.75;
+    }
+
+    header{
+      background: radial-gradient(1200px 500px at 20% -10%, #111 0%, #050507 60%);
+      color:var(--hero-text);
+      border-bottom:1px solid #111;
+    }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px; }
+
+    .top{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1{ margin:0; font-size:30px; letter-spacing:-0.02em; }
+    .role{ margin-top:6px; color:var(--hero-muted); }
+    .links{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; /* smaller height */
+      border:1px solid var(--pill-border);
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--pill-text);
+      background: linear-gradient(180deg, var(--pill-bg1) 0%, var(--pill-bg2) 100%);
+    }
+    .pill:hover{ filter: brightness(0.98); }
+
+    .small{ font-size:14px; color:var(--hero-muted); margin:10px 0 0; }
+
+    main{ padding:10px 0 34px; }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:18px 18px;
+    }
+
+    h2{
+      font-size:18px;
+      margin:0 0 12px;
+      letter-spacing:-0.01em;
+    }
+
+    p{ margin: 0 0 12px; }
+    p:last-child{ margin-bottom:0; }
+
+    .equations{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 14px;
+      margin:14px 0;
+    }
+
+    .note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      margin-top:16px;
+      padding-top:14px;
+    }
+
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    footer{
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      padding:18px 0;
+    }
+
+    /* Make MathJax a bit nicer in cards */
+    mjx-container[jax="CHTML"]{
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding-bottom:2px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <h1>キログラムとアンペア（クーロン）は基本単位ではなかった</h1>
+          <div class="role">Space-Time Unit (ST unit) / LT theory note</div>
+          <div class="links">
+            <a class="pill" href="index.html">← Home</a>
+            <a class="pill" href="https://zenodo.org/records/18112049" target="_blank" rel="noopener">Zenodo (ST Unit paper)</a>
+          </div>
+          <p class="small">Physics · Unit systems · Natural units</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+
+        <p>
+          現在、国際単位系（SI）では、キログラムとアンペアは基本単位として定義されています。<br/>
+          しかしこの分類は、人類が測定上の利便性に基づいて定めた制度的単位であり、自然科学的必然性を意味するものではありません。<br/>
+          本稿では、質量と電荷は基本量ではなく、より根源的な時空的関係から導かれる構成量であることを論じます。
+        </p>
+
+        <p>
+          さらに本稿では、万有引力定数 \(G\)、真空の誘電率 \(\varepsilon_0\)、および真空の透磁率 \(\mu_0\) が、
+          キログラムおよびクーロンという人為的単位体系の整合性を保つために導入された比例定数であり、
+          自然界に固有の本質定数ではないことを示します。
+        </p>
+
+        <p>
+          結論を先に述べれば、キログラムという単位は、\(\delta\) 変換子によって再定義され、純粋な時空次元 \(\mathrm{m^3/s^2}\) として表されます。
+        </p>
+
+        <div class="equations">
+          \[
+            m_0 = m_e \,\delta \approx 253\ \mathrm{m^3/s^2}
+          \]
+          \[
+            \delta = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)^2
+          \]
+        </div>
+
+        <p>
+          同様に、クーロンという電荷単位も \(\varepsilon\) 変換子によって再定義され、質量と同様に、時空次元へと還元されます。
+        </p>
+
+        <div class="equations">
+          \[
+            e_0 = e\,\varepsilon \approx 8.45\times 10^{-7}\ \mathrm{m^2/s}
+          \]
+          \[
+            \varepsilon = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)
+          \]
+        </div>
+
+        <p class="note">
+          ここで、\(c\) は光速、\(e\) は素電荷、\(m_e\) は電子質量、\(\mu_0\) は真空の透磁率です。
+        </p>
+
+        <p>
+          その結果、アインシュタインの静止質量エネルギーの基本関係式を想起させる、
+        </p>
+
+        <div class="equations">
+          \[
+            m_0 = e_0\,c
+          \]
+        </div>
+
+        <p>
+          という極めてシンプルな関係式が導かれます。
+        </p>
+
+        <p>
+          私たちはこの変換体系を <strong>Space-Time Unit（ST unit）</strong> と呼びます。<br/>
+          ST unit においては、単位体系は必然的に電子スケールに帰着し、古典電子半径が基本長として定義されます。
+        </p>
+
+        <p>
+          さらに、ST unit における基本時間は、この古典電子半径を光速で移動する時間として定義されます。<br/>
+          この基本長と基本時間から、素電荷、電子質量、そして電子の静止質量エネルギーが一貫して定義されます。
+        </p>
+
+        <p>
+          したがって、この基本長と基本時間を「1」と定めることにより、
+          プランク自然単位系とは異なる、新たな自然単位系が必然的に導かれます。
+        </p>
+
+        <p>
+          このように、物理学が歴史的に発展する過程において別個に定義されてきた「質量」と「電荷」を再定義するだけで、
+          物理公式は驚くほど単純化され、より直感的な構造を取り戻します。<br/>
+          本稿で述べた結論に至る詳細な導出および体系的議論については、以下の文献をご参照ください。
+        </p>
+
+        <div class="cta">
+          <div>
+            <strong>Reference (Zenodo)</strong><br/>
+            <span class="note">Space-Time Unit System for Unifying Gravitational Mechanics, Electromagnetism and Quantum Physics</span>
+          </div>
+          <div>
+            <a class="pill" href="https://zenodo.org/records/18112049" target="_blank" rel="noopener">
+              → Read on Zenodo
+            </a>
+          </div>
+        </div>
+
+        <p class="note">
+          ※ 本ページは、理論の入口としての要約です。数式の詳細・体系的議論は上記文献をご参照ください。
+        </p>
+
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
