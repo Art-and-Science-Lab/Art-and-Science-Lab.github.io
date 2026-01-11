@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kilogram and Ampere (Coulomb) Were Not Fundamental Units | Toshio Sujino</title>
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="A conceptual note arguing that mass and charge are not fundamental quantities but constructed from deeper spacetime relations. Introduces the Space-Time Unit (ST unit) framework and links to the Zenodo paper." />
+
+  <!-- MathJax (LaTeX rendering) -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --card:#f9fafb;
+      --line:#e5e7eb;
+      --link:#2563eb;
+      --max: 920px;
+
+      --hero-bg:#050507;
+      --hero-text:#f3f4f6;
+      --hero-muted:#b6bcc6;
+
+      --pill-bg1:#f3f4f6;
+      --pill-bg2:#e5e7eb;
+      --pill-text:#111827;
+      --pill-border:#d1d5db;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.75;
+    }
+
+    header{
+      background: radial-gradient(1200px 500px at 20% -10%, #111 0%, #050507 60%);
+      color:var(--hero-text);
+      border-bottom:1px solid #111;
+    }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:26px 18px; }
+
+    .top{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    h1{ margin:0; font-size:30px; letter-spacing:-0.02em; }
+    .role{ margin-top:6px; color:var(--hero-muted); }
+    .links{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top:12px;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; /* smaller height */
+      border:1px solid var(--pill-border);
+      border-radius:999px;
+      text-decoration:none;
+      color:var(--pill-text);
+      background: linear-gradient(180deg, var(--pill-bg1) 0%, var(--pill-bg2) 100%);
+    }
+    .pill:hover{ filter: brightness(0.98); }
+
+    .small{ font-size:14px; color:var(--hero-muted); margin:10px 0 0; }
+
+    main{ padding:10px 0 34px; }
+
+    .card{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:16px;
+      padding:18px 18px;
+    }
+
+    p{ margin: 0 0 12px; }
+    p:last-child{ margin-bottom:0; }
+
+    .equations{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 14px;
+      margin:14px 0;
+    }
+
+    .note{
+      margin-top:10px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .cta{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      border-top:1px solid var(--line);
+      margin-top:16px;
+      padding-top:14px;
+    }
+
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+
+    footer{
+      border-top:1px solid var(--line);
+      color:var(--muted);
+      font-size:13px;
+      padding:18px 0;
+    }
+
+    /* Make MathJax a bit nicer in cards */
+    mjx-container[jax="CHTML"]{
+      overflow-x:auto;
+      overflow-y:hidden;
+      padding-bottom:2px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <h1>Kilogram and Ampere (Coulomb) Were Not Fundamental Units</h1>
+          <div class="role">Space-Time Unit (ST unit) / ST theory note</div>
+          <div class="links">
+            <a class="pill" href="index.html">Home</a>
+            <a class="pill" href="https://zenodo.org/records/18112049" target="_blank" rel="noopener">ST Unit</a>
+          </div>
+          <p class="small">Physics · Unit systems · Natural units</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card">
+
+        <p>
+          In the current International System of Units (SI), the kilogram and the ampere are defined as base units.
+          However, this classification reflects a historically contingent, human-centered choice made for measurement convenience,
+          not a necessity imposed by nature.
+          In this note, I argue that mass and electric charge are not fundamental quantities but constructed quantities
+          derived from deeper spacetime relations.
+        </p>
+
+        <p>
+          Furthermore, I show that the gravitational constant \(G\), the vacuum permittivity \(\varepsilon_0\),
+          and the vacuum permeability \(\mu_0\) function as proportional constants introduced to maintain consistency
+          within the human-defined unit system of kilograms and coulombs, rather than intrinsic constants of nature.
+        </p>
+
+        <p>
+          To state the conclusion first: the kilogram is redefined through the \(\delta\)-transformation
+          and expressed as a purely spacetime dimension \(\mathrm{m^3/s^2}\).
+        </p>
+
+        <div class="equations">
+          \[
+            m_0 = m_e \,\delta \approx 253\ \mathrm{m^3/s^2}
+          \]
+          \[
+            \delta = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)^2
+          \]
+        </div>
+
+        <p>
+          Likewise, the coulomb (electric charge unit) is redefined via the \(\gamma\)-transformation,
+          reducing charge to a spacetime dimension as well.
+        </p>
+
+        <div class="equations">
+          \[
+            e_0 = e\,\gamma \approx 8.45\times 10^{-7}\ \mathrm{m^2/s}
+          \]
+          \[
+            \gamma = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)
+          \]
+        </div>
+
+        <p class="note">
+          Here, \(c\) is the speed of light, \(e\) is the elementary charge, \(m_e\) is the electron mass,
+          and \(\mu_0\) is the vacuum permeability.
+        </p>
+
+        <p>
+          As a result, an extremely simple relation emerges—reminiscent of Einstein’s rest-mass energy relation:
+        </p>
+
+        <div class="equations">
+          \[
+            m_0 = e_0\,c
+          \]
+        </div>
+
+        <p>
+          We call this transformation framework the <strong>Space-Time Unit (ST unit)</strong>.
+          In the ST unit system, the unit structure necessarily collapses onto the electron scale,
+          and the classical electron radius is defined as the fundamental length.
+        </p>
+
+        <p>
+          The fundamental time is then defined as the time required for light to traverse this classical electron radius.
+          From this fundamental length and fundamental time, the elementary charge, the electron mass,
+          and the electron rest-mass energy are consistently defined.
+        </p>
+
+        <p>
+          Consequently, by setting this fundamental length and fundamental time equal to unity,
+          a natural unit system necessarily emerges—distinct from the Planck natural units.
+        </p>
+
+        <p>
+          In this way, simply redefining mass and charge—historically introduced as independent quantities—
+          leads to a remarkable simplification of physical formulas, restoring a more intuitive structure
+          to fundamental physics. For detailed derivations and the full theoretical framework, please refer to:
+        </p>
+
+        <div class="cta">
+          <div>
+            <strong>Reference</strong><br/>
+            <span class="note">Space-Time Unit System for Unifying Gravitational Mechanics, Electromagnetism and Quantum Physics</span>
+          </div>
+          <div>
+            <a class="pill" href="https://zenodo.org/records/18112049" target="_blank" rel="noopener">
+              Read ST Unit
+            </a>
+          </div>
+        </div>
+
+        <p class="note">
+          Note: This page is intended as an entry-point summary. Please see the reference above for full derivations and a systematic discussion.
+        </p>
+
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
