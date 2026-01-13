@@ -8,16 +8,15 @@
   <link rel="canonical" href="https://toshiosujino.github.io/" />
   <meta name="robots" content="index,follow" />
   <meta name="description" content="Independent Researcher. Publications on ST Theory and reproductive medicine." />
-  
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KMSX0B5WT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-  
     gtag('config', 'G-5KMSX0B5WT');
   </script>
-  
+
   <style>
     :root{
       --bg:#ffffff;
@@ -43,8 +42,6 @@
       line-height:1.65;
     }
 
-    /* ===== HERO HEADER ===== */
-
     header{
       background: radial-gradient(1200px 500px at 20% -10%, #111 0%, #050507 60%);
       color:var(--hero-text);
@@ -53,9 +50,7 @@
 
     .wrap{ max-width:var(--max); margin:0 auto; padding:34px 18px; }
 
-    header .wrap{
-      padding:18px 18px;
-    }
+    header .wrap{ padding:18px 18px; }
 
     .top{
       display:flex;
@@ -65,26 +60,13 @@
       flex-wrap:wrap;
     }
 
-    .hero-text{
-      flex:1 1 360px;
-      min-width:280px;
-    }
+    .hero-text{ flex:1 1 360px; min-width:280px; }
 
-    h1{
-      margin:0;
-      font-size:36px;
-      letter-spacing:-0.02em;
-    }
+    h1{ margin:0; font-size:36px; letter-spacing:-0.02em; }
 
     .role{ margin-top:6px; color:var(--hero-muted); }
 
-    .links{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:14px;
-    }
+    .links{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px; }
 
     .pill{
       display:inline-flex;
@@ -94,73 +76,38 @@
       border:1px solid rgba(255,255,255,.25);
       border-radius:999px;
       text-decoration:none;
-    
-      color:#111827; /* ← 文字を黒寄りに */
-    
-      background: linear-gradient(180deg,
-        #f1f3f5 0%,
-        #d9dde2 100%);
-      
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.8),
-        0 4px 14px rgba(0,0,0,.35);
-    
+      color:#111827;
+      background: linear-gradient(180deg,#f1f3f5 0%,#d9dde2 100%);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 4px 14px rgba(0,0,0,.35);
       transition: all .2s ease;
     }
-    
+
     .pill:hover{
       border-color: rgba(255,255,255,.6);
-      background: linear-gradient(180deg,
-        #ffffff 0%,
-        #e3e7ec 100%);
+      background: linear-gradient(180deg,#ffffff 0%,#e3e7ec 100%);
       transform: translateY(-1px);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,.9),
-        0 6px 20px rgba(0,0,0,.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.9), 0 6px 20px rgba(0,0,0,.45);
     }
 
-    .small{
-      font-size:14px;
-      color:var(--hero-muted);
-      margin:10px 0 0;
-    }
+    .small{ font-size:14px; color:var(--hero-muted); margin:10px 0 0; }
 
-    /* ===== HERO VIDEO ===== */
-
-    .hero-video{
-      flex:0 1 320px;
-      max-width:340px;
-    }
+    .hero-video{ flex:0 1 320px; max-width:340px; }
 
     .hero-video video{
       width:100%;
       border-radius:16px;
       display:block;
       background:#000;
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.5),
-        inset 0 0 0 1px rgba(255,255,255,.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,.5), inset 0 0 0 1px rgba(255,255,255,.05);
     }
 
-    /* ===== MAIN ===== */
-
     main{ padding:6px 0 32px; }
-    
-      main .wrap{
-    padding-top:12px;
-  }
+    main .wrap{ padding-top:12px; }
 
     h2{ font-size:18px; margin:0 0 10px; letter-spacing:-0.01em; }
 
-    .grid{
-      display:grid;
-      gap:14px;
-      grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 860px){
-      .grid{ grid-template-columns: 1.15fr 0.85fr; }
-    }
+    .grid{ display:grid; gap:14px; grid-template-columns: 1fr; }
+    @media (min-width: 860px){ .grid{ grid-template-columns: 1.15fr 0.85fr; } }
 
     .card{
       border:1px solid var(--line);
@@ -169,24 +116,12 @@
       padding:16px 16px;
     }
 
-    .item{
-      padding:12px 0;
-      border-top:1px solid var(--line);
-    }
-
+    .item{ padding:12px 0; border-top:1px solid var(--line); }
     .item:first-child{ border-top:none; padding-top:0; }
     .item:last-child{ padding-bottom:0; }
 
-    .title{
-      font-weight:650;
-      margin:0 0 4px;
-    }
-
-    .meta{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-    }
+    .title{ font-weight:650; margin:0 0 4px; }
+    .meta{ margin:0; color:var(--muted); font-size:14px; }
 
     a{ color:var(--link); text-decoration:none; }
     a:hover{ text-decoration:underline; }
@@ -202,97 +137,106 @@
 
 <body>
 
-  <!-- ===== HEADER ===== -->
-
-  <header>
-    <div class="wrap">
-      <div class="top">
-
-        <div class="hero-text">
-          <h1>Toshio Sujino</h1>
-          <div class="role">Independent Researcher and Data Scientist</div>
-
-          <div class="links">
-            <a class="pill" href="https://orcid.org/0009-0009-6508-427X" target="_blank" rel="noopener">ORCID</a>
-            <a class="pill" href="https://www.researchgate.net/profile/Toshio-Sujino" target="_blank" rel="noopener">ResearchGate</a>
-          </div>
-
-          <p class="small">Mathematics · Physics · Reproductive Medicine</p>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div class="hero-text">
+        <h1>Toshio Sujino</h1>
+        <div class="role">Independent Researcher and Data Scientist</div>
+        <div class="links">
+          <a class="pill" href="https://orcid.org/0009-0009-6508-427X" target="_blank">ORCID</a>
+          <a class="pill" href="https://www.researchgate.net/profile/Toshio-Sujino" target="_blank">ResearchGate</a>
         </div>
+        <p class="small">Mathematics · Physics · Reproductive Medicine</p>
+      </div>
 
-        <!-- ===== VIDEO ===== -->
-        <div class="hero-video">
-          <video autoplay muted loop playsinline>
-            <source src="hero.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
+      <div class="hero-video">
+        <video autoplay muted loop playsinline>
+          <source src="hero.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- ===== MAIN ===== -->
+<main>
+  <div class="wrap">
 
-  <main>
-    <div class="wrap">
-      <div class="grid">
+    <!-- ===== CONCEPTUAL TRIGGER ===== -->
+    <section class="card" style="margin-bottom:14px;">
+      <h2>Conceptual Starting Point</h2>
 
-        <section class="card">
-          <h2>Publications</h2>
+      <p class="title" style="font-size:17px;">
+        Kilogram and Ampere (Coulomb) were not fundamental units.
+      </p>
 
-          <div class="item">
-            <p class="title">
-              <a href="https://zenodo.org/records/18221233" target="_blank" rel="noopener">
-                Space-Time Unit System for Unifying Gravitational Mechanics, Electromagnetism and Quantum Physics
-              </a>
-            </p>
-            <p class="meta">Preprint</p>
-          </div>
+      <p class="meta">
+        Modern physics is built on the assumption that mass and electric charge are fundamental.
+        This work starts from a different premise: that all physical quantities can be expressed
+        using only space and time.
+      </p>
 
-          <div class="item">
-            <p class="title">
-              <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1595970/full"
-                 target="_blank" rel="noopener">
-                Comprehensive mathematical modeling of age-dependent oocyte quality and quantity for predicting live birth rate
-              </a>
-            </p>
-            <p class="meta">Original Article</p>
-          </div>
-        </section>
+      <p class="meta" style="margin-top:8px;">
+        <a href="ST_unit.html">→ Explore the Space-Time Unit System (ST Theory)</a>
+      </p>
+    </section>
 
-        <aside class="card">
-          <h2>Notes on the Background of the Two Publications</h2>
+    <div class="grid">
 
-          <p class="meta" style="margin-top:0;">
-            I present two publications from different disciplines—physics and reproductive medicine.
-            Although they appear unrelated, both works are grounded in a shared perspective:
-            re-examining established frameworks by shifting the conceptual point of departure.
+      <section class="card">
+        <h2>Publications</h2>
+
+        <div class="item">
+          <p class="title">
+            <a href="https://zenodo.org/records/18221233" target="_blank">
+              Space-Time Unit System for Unifying Gravitational Mechanics, Electromagnetism and Quantum Physics
+            </a>
           </p>
+          <p class="meta">Preprint</p>
+        </div>
 
-          <p class="meta">
-            <a href="notes.html">→ Read the full notes</a>
+        <div class="item">
+          <p class="title">
+            <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1595970/full" target="_blank">
+              Comprehensive mathematical modeling of age-dependent oocyte quality and quantity for predicting live birth rate
+            </a>
           </p>
+          <p class="meta">Original Article</p>
+        </div>
+      </section>
 
-          <div class="item">
-            <p class="title">Contact</p>
-            <p class="meta">toshio.sujino@gmail.com</p>
-          </div>
-        </aside>
+      <aside class="card">
+        <h2>Notes on the Background of the Two Publications</h2>
 
-      </div>
+        <p class="meta" style="margin-top:0;">
+          I present two publications from different disciplines—physics and reproductive medicine.
+          Although they appear unrelated, both works are grounded in a shared perspective:
+          re-examining established frameworks by shifting the conceptual point of departure.
+        </p>
+
+        <p class="meta">
+          <a href="notes.html">→ Read the full notes</a>
+        </p>
+
+        <div class="item">
+          <p class="title">Contact</p>
+          <p class="meta">toshio.sujino@gmail.com</p>
+        </div>
+      </aside>
+
     </div>
-  </main>
+  </div>
+</main>
 
-  <footer>
-    <div class="wrap">
-      © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
-    </div>
-  </footer>
+<footer>
+  <div class="wrap">
+    © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
+  </div>
+</footer>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
