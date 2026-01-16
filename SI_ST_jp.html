@@ -30,6 +30,21 @@
       line-height:1;
     }
 
+    .topHeader{
+      background:#000;
+      color:#fff;
+      padding:22px 0 18px;
+      border-bottom:1px solid #111;
+    }
+
+    .topHeader h1{
+      color:#fff;
+    }
+
+    .topHeader .muted{
+      color:#aaaaaa; 
+    }
+
     /* LaTeX-like fraction */
     .u{ display:inline-flex; align-items:flex-end; gap:6px; }
     .dot{ padding:0 2px; }
@@ -48,11 +63,17 @@
   </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>SI単位 ⇔ ST単位 ⇔ ST自然単位 コンバーター</h1>
-  <div class="muted">
-    SI単位系 / ST単位系 / ST自然単位系 のどこに数値を入れても自動で相互変換します。
-  </div>
+  <header class="topHeader">
+    <div class="wrap">
+      <h1>SI単位 ⇔ ST単位 ⇔ ST自然単位 コンバーター</h1>
+      <div class="muted">
+        SI単位系 / ST単位系 / ST自然単位系 のどこに数値を入れても自動で相互変換します。
+      </div>
+    </div>
+  </header>
+  
+  <div class="wrap">
+  
 
     <div class="row">
     <div class="col">
@@ -113,17 +134,10 @@
   const MUc = MU0 / (4 * Math.PI);  // 1e-7
   const e  = 1.602176634e-19;       // C
   const c0 = 299792458;             // m/s
-  const me = 9.1093837e-31;      // kg
-  // Your ST definitions:
-  // e_m = e*c/m_e
-  // γ = μc * e_m
-  // δ = μc * e_m^2
+  const me = 9.1093837015e-31;      // kg
   const em = e * c0 / me;
   const gamma = MUc * em;
   const delta = MUc * em * em;
-
-  // ---- ST Natural (use classical electron radius) ----
-  // r_e = μc * e^2 / m_e  (since 1/(4π ε0) = μ0 c^2 /(4π) = μc c^2)
   const re = MUc * (e * e) / me;  // meters
   const te = re / c0;              // seconds
 
@@ -135,7 +149,7 @@
         return r.toString();
     }
     const ax = Math.abs(x);
-    if (ax >= 1e6 || ax < 1e-3) return x.toExponential(6);
+    if (ax >= 1e3 || ax < 1e-3) return x.toExponential(9);
     return (Math.round(x * 1e12) / 1e12).toString();
     };  
 
@@ -151,7 +165,6 @@
     return parseInt(s,10);
   }
 
-  // exp = [kgExp, CExp, mExp, sExp]
   function unitHTMLFromExp(exp){
     const names = ["kg","C","m","s"];
     const num = [];
@@ -189,8 +202,6 @@
     `;
   }
 
-  // ST Natural unit label: show r_e and (r_e/c)
-  // stExp = [0,0,M,S] corresponds to m^M s^S in ST
   function unitHTML_STN_fromStExp(stExp){
     const M = stExp[2];
     const S = stExp[3];
@@ -203,7 +214,6 @@
       return `<span class="pow">${name}<sup>${pAbs}</sup></span>`;
     };
 
-    // basis: r_e (length), t_e = r_e/c (time)
     if (M !== 0){
       const t = termHTML("L", Math.abs(M));
       (M > 0 ? num : den).push(t);
@@ -232,7 +242,6 @@
     `;
   }
 
-  // SI -> ST absorbs kg and C into (m,s)
   function siExpToStExp(siExp){
     const [kgExp, cExp, mExp, sExp] = siExp;
     const m2 = mExp + 3*kgExp + 2*cExp;
@@ -240,7 +249,6 @@
     return [0, 0, m2, s2];
   }
 
-  // numeric scale factor SI -> ST
   function scaleFactor_SI_to_ST(kgExp, cExp){
     let f = 1;
     if (kgExp !== 0) f *= Math.pow(delta, kgExp);
@@ -248,8 +256,6 @@
     return f;
   }
 
-  // ST <-> ST Natural scaling (depends only on ST exponents M,S)
-  // Q = v_st * m^M s^S = v_n * r_e^M t_e^S
   function stToStn(v_st, stExp){
     const M = stExp[2], S = stExp[3];
     const scale = Math.pow(re, M) * Math.pow(te, S);
@@ -268,7 +274,8 @@ const quantities = {
   velocity:  { label:"Velocity",     si:"m/s",       exp:[ 0, 0, 1,-1] },
   acceleration: { label:"Acceleration", si:"m/s^2", exp:[0,0,1,-2] },
   mass_kg:  { label:"Mass",        si:"kg",        exp:[ 1, 0, 0, 0] },
-  momentum_p: { label:"Momentum", si:"p = kg·m/s", exp:[1,0,1,-1] },
+  momentum_p: { label:"Momentum", si:"kg·m/s", exp:[1,0,1,-1] },
+  action_S: { label:"Action", si:"J·s", exp:[1,0,2,-1] },
   force_N:  { label:"Force",       si:"N",         exp:[ 1, 0, 1,-2] },
   energy_J: { label:"Energy",      si:"J",         exp:[ 1, 0, 2,-2] },
   power_W:  { label:"Power",       si:"W",         exp:[ 1, 0, 2,-3] },
@@ -278,16 +285,39 @@ const quantities = {
   resistance_Ohm:{label:"Resistance", si:"Ω = V/A", exp:[ 1,-2, 2,-1] },
   capacitance_F:{label:"Capacitance", si:"F = C/V", exp:[-1, 2,-2, 2] },
   electricField: { label:"Electric field",  si:"V/m",          exp:[ 1,-1, 1,-2] },
-  magneticField:{ label:"Magnetic field",  si:"T = V·s/m^2",  exp:[ 1,-1, 0,-1] },
-  custom:   { label:"Custom",      si:"kg^a·C^b·m^c·s^d", exp:[ 0, 0, 0, 0] },
+  magneticField:{ label:"Magnetic field",  si:"T = N/(A·m)",  exp:[ 1,-1, 0,-1] },
+  inverse_length: { label:"Inverse length", si:"1/m", exp:[0,0,-1,0] },
+  vacuumPermeability: {label:"Vacuum permeability (μ₀)",si:"N/A²",exp:[ 1, -2, 1, 0 ]},
+  vacuumPermittivity: {label:"Vacuum permittivity (ε₀)",si:"F/m",exp:[ -1, 2, -3, 2 ]},
+  gravitational_G: {label: "Gravitational constant",si: "m³/(kg·s²)",exp: [-1, 0, 3, -2]},
+  dimensionless: { label:"Dimensionless", si:"1", exp:[0,0,0,0] },
+  custom:   { label:"Custom",      si:"kgᵃ·Cᵇ·mᶜ·sᵈ", exp:[ 0, 0, 0, 0] },
 };
 
-// ---- Constants (dropdown injects SI value + switches quantity) ----
 const constants = {
-  none: { label:"—", quantityKey:"", siValue:"" }, // 空欄
-  c0:   { label:"Speed of light (c)",      quantityKey:"velocity", siValue: c0 },
-  e0:   { label:"Elementary charge (e)",  quantityKey:"charge_C", siValue: e  },
+  none: { label:"—", quantityKey:"", siValue:"" },
+  c0:   { label:"Speed of light (c)", quantityKey:"velocity", siValue:"299792458" },
+  e0:   { label:"Elementary charge (e)", quantityKey:"charge_C", siValue:"1.602176634e-19" },
+  h:    { label:"Planck constant (h)", quantityKey:"action_S", siValue:"6.62607015e-34" },
+  hbar: { label:"Reduced Planck constant (ħ)", quantityKey:"action_S", siValue:"1.054571817e-34" },
+  alpha: { label:"Fine-structure constant (α)", quantityKey:"dimensionless", siValue:"0.007297352569" },
+  alphaInv: { label:"Inverse fine-structure constant (α⁻¹, α₀)", quantityKey:"dimensionless", siValue:"137.035999084" },
+  re: { label:"Classical electron radius (rₑ)", quantityKey:"length_m", siValue:"2.8179403262e-15" },
+  lambdaC: { label:"Compton wavelength (λ_C)", quantityKey:"length_m", siValue:"2.42631023867e-12" },
+  lambdaCbar: { label:"Reduced Compton wavelength (λ̄_C)", quantityKey:"length_m", siValue:"3.8615926796e-13" },
+  rydberg: { label:"Rydberg constant (R∞)", quantityKey:"inverse_length", siValue:"10973731.568160" },
+  rydbergInv: { label:"Inverse Rydberg constant (R∞⁻¹)", quantityKey:"length_m", siValue:"9.112670505e-8" },
+  me:   { label:"Electron mass (mₑ)", quantityKey:"mass_kg", siValue:"9.1093837015e-31" },
+  mp: { label:"Proton mass (mₚ)", quantityKey:"mass_kg", siValue:"1.67262192369e-27" },
+  mn: { label:"Neutron mass (mₙ)", quantityKey:"mass_kg", siValue:"1.67492749804e-27" },
+  mEarth: { label:"Earth mass (M⊕)", quantityKey:"mass_kg", siValue:"5.9722e24" },
+  mSun: { label:"Solar mass (M☉)", quantityKey:"mass_kg", siValue:"1.98847e30" },
+  Z0: { label:"Vacuum impedance (Z₀)", quantityKey:"resistance_Ohm", siValue:"376.730313668" },
+  mu0: { label:"Vacuum permeability (μ₀)", quantityKey:"vacuumPermeability", siValue:"1.25663706212e-6" },
+  eps0: {label:"Vacuum permittivity (ε₀)",quantityKey:"vacuumPermittivity",siValue:"8.8541878128e-12"},
+  G: {label: "Gravitational constant (G)",quantityKey: "gravitational_G",siValue: "6.67430e-11"},
 };
+
 
   const qSel   = document.getElementById("quantity");
   const cSel   = document.getElementById("constant");
@@ -472,11 +502,10 @@ const constants = {
     if (!cdef || ck === "none") return;
 
     qSel.value = cdef.quantityKey;
-
     refreshUnits();
 
     isUpdating = true;
-    siIn.value = fmt(Number(cdef.siValue));
+    siIn.value = cdef.siValue.toString();
     stIn.value = "";
     stnIn.value = "";
     isUpdating = false;
@@ -486,11 +515,16 @@ const constants = {
 
   qSel.addEventListener("change", ()=>{
     cSel.value = "none";
+    isUpdating = true;
+    siIn.value  = "";
+    stIn.value  = "";
+    stnIn.value = "";
+    isUpdating = false;
+    errEl.style.display = "none";
+    errEl.textContent = "";
     refreshUnits();
-    if (siIn.value.trim()) convertFromSI();
-    else if (stIn.value.trim()) convertFromST();
-    else if (stnIn.value.trim()) convertFromSTN();
   });
+
 
   ["a","b","c","d"].forEach(id=>{
     const el = document.getElementById(id);
@@ -507,6 +541,7 @@ const constants = {
   stnIn.addEventListener("input", convertFromSTN);
 
   // init
+  qSel.value = "mass_kg";
   refreshUnits();
 </script>
 </body>
