@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>SI ⇔ ST ⇔ ST(Natural) Converter</title>
+    <title>SI ⇔ ST ⇔ ST Natural Unit Converter</title>
     <style>
         :root{ --bg:#fff; --text:#111827; --muted:#6b7280; --card:#f9fafb; --line:#e5e7eb; }
         body{ margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:var(--text); font-size: 15px;}
@@ -86,6 +86,8 @@
             font-size: 0.95em; 
             color: #555;
             }
+        
+        ::placeholder {color: #bbbbbb;opacity: 1;}
 
         /* responsive */
         @media (max-width: 820px){
@@ -113,29 +115,29 @@
     <body>
         <header class="topHeader">
             <div class="wrap">
-            <h1>SI単位 ⇔ ST単位 ⇔ ST自然単位 コンバーター</h1>
-            <div class="muted">
-                単位を選択した後、SI単位系・ST単位系・ST自然単位系のいずれかに数値を入力すると、自動的に相互変換されます。<br>
-                また、定数を選択すると、SI単位系における既知の物理定数を基準として、対応するST単位系およびST自然単位系の値を計算します。
-            </div>
+                <h1>SI ⇔ ST ⇔ ST Natural Units Converter</h1>
+                <div class="muted">
+                    After selecting a unit, enter a value in either the SI, ST, or ST natural unit system to automatically convert between them.<br>
+                    You can also select a physical constant to calculate the corresponding ST and ST natural values based on the known SI value.
+                </div>
             </div>
         </header>
 
         <div class="wrap">
             <div class="row">
             <div class="col">
-                <label>単位</label>
+                <label>Unit</label>
                 <select id="quantity"></select>
             </div>
 
             <div class="col">
-                <label>定数</label>
+                <label>Pysical Constant</label>
                 <select id="constant"></select>
             </div>
             </div>
 
             <div id="customBox" class="card" style="display:none; margin-top:12px;">
-            <div class="muted">Custom: <span class="mono">kgᵃ·Cᵇ·mᶜ·sᵈ</span> の指数（整数）を入力</div>
+            <div class="muted"> Custom: Enter integer exponents for <span class="mono">kgᵃ·Cᵇ·mᶜ·sᵈ</span></div>
             <div class="row" style="margin-top:10px;">
                 <div class="col"><label>a (kg)</label><input id="a" value="0"></div>
                 <div class="col"><label>b (C)</label><input id="b" value="0"></div>
@@ -146,25 +148,25 @@
 
             <div class="row rowInputs" style="margin-top:12px;">
             <div class="col">
-                <label>SI 単位系</label>
+                <label>SI Unit</label>
                 <div class="inputWrap">
-                <input id="siValue" placeholder="例: 1.23e-4" />
+                <input id="siValue" placeholder="e.g. 1.23e-4" />
                 <span class="unitLabel" id="siUnit">—</span>
                 </div>
             </div>
 
             <div class="col">
-                <label>ST 単位系</label>
+                <label>ST Unit</label>
                 <div class="inputWrap">
-                <input id="stValue" placeholder="例: 1.23e-4" />
+                <input id="stValue" placeholder="e.g. 1.23e-4" />
                 <span class="unitLabel" id="stUnit">—</span>
                 </div>
             </div>
 
             <div class="col">
-                <label>ST 自然単位系</label>
+                <label>ST Natural Unit</label>
                 <div class="inputWrap">
-                <input id="stnValue" placeholder="例: 1.23e-4" />
+                <input id="stnValue" placeholder="e.g. 1.23e-4" />
                 <span class="unitLabel" id="stnUnit">—</span>
                 </div>
             </div>
