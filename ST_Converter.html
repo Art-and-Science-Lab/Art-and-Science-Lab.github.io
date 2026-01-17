@@ -38,6 +38,16 @@
         }
         .topHeader h1{ color:#fff; font-size: 36px;}
         .topHeader .muted{ color:#aaaaaa; font-size: 16px;}
+        .pill{
+          display:inline-flex; align-items:center; gap:8px;
+          padding:6px 10px; /* smaller height */
+          border:1px solid var(--pill-border);
+          border-radius:999px;
+          text-decoration:none;
+          color:var(--pill-text);
+          background: linear-gradient(180deg, var(--pill-bg1) 0%, var(--pill-bg2) 100%);
+        }
+        .pill:hover{ filter: brightness(0.98); }
 
         /* LaTeX-like fraction */
         .u{ display:inline-flex; align-items:flex-end; gap:6px; }
