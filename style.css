@@ -22,11 +22,6 @@ body{
   line-height:1.65;
 }
 
-/* =========================
-   Home page only (.home ...)
-   ========================= */
-
-/* index.html の hero header 専用（他ページに飛ばさない） */
 .home header{
   background: radial-gradient(1200px 500px at 20% -10%, #111 0%, #050507 60%);
   color:var(--hero-text);
@@ -35,13 +30,8 @@ body{
 
 .home header .wrap{ padding:18px 18px; }
 
-/* index.html の見出しサイズは Home 専用に */
 .home h1{ margin:0; font-size:36px; letter-spacing:-0.02em; }
 .home h2{ font-size:18px; margin:0 0 10px; letter-spacing:-0.01em; }
-
-/* =========================
-   Shared layout / components
-   ========================= */
 
 .wrap{ max-width:var(--max); margin:0 auto; padding:34px 18px; }
 
@@ -122,4 +112,35 @@ footer{
   color:var(--muted);
   font-size:13px;
   padding:18px 0;
+}
+
+.equations{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px 14px;
+  margin:14px 0;
+}
+
+.note{
+  margin-top:10px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  margin-top:16px;
+  padding-top:14px;
+}
+
+mjx-container[jax="CHTML"]{
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding-bottom:2px;
 }
