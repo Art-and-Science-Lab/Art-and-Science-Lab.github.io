@@ -144,3 +144,24 @@ mjx-container[jax="CHTML"]{
   overflow-y:hidden;
   padding-bottom:2px;
 }
+
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling: touch;
+  margin-top:12px;
+}
+
+.table-wrap table{
+  width:100%;
+  min-width:520px;
+  font-size: clamp(12px, 3vw, 16px);
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.table-wrap td, 
+.table-wrap th{
+  white-space: nowrap;
+  padding:6px 8px;
+}
