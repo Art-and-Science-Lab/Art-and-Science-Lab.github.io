@@ -22,6 +22,76 @@ body{
   line-height:1.65;
 }
 
+.logo{
+  font-family:
+    "Harlow Solid Italic",
+    "Great Vibes",
+    "Pacifico",
+    "Brush Script MT",
+    Georgia,
+    serif;
+  font-size: 52px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.02;
+}
+
+.home .hero-text{
+  display:flex;
+  flex-direction:column;
+  gap:6px; 
+}
+
+.home .logo + .small{
+  margin-top: 2px;
+}
+
+.home .name{
+  margin: 6px 0 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.home .role{
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--hero-muted);
+}
+
+.home .small{
+  margin: 0;
+  font-size: 15px;
+  color: var(--hero-muted);
+}
+
+.home .links{
+  margin-top: 10px;
+}
+
+.tagline{
+  margin: 4px 0 14px;
+  font-size: 16px;
+  color: var(--hero-muted);
+}
+
+.identity{
+  margin-bottom: 12px;
+}
+
+.identity .name{
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--hero-text);
+}
+
+.identity .role{
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--hero-muted);
+}
+
 .home header{
   background: radial-gradient(1200px 500px at 20% -10%, #111 0%, #050507 60%);
   color:var(--hero-text);
@@ -53,7 +123,9 @@ body{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  padding:5px 14px;
+  padding:3px 12px;
+  font-size:14px;
+  line-height:1.2;
   border:1px solid rgba(255,255,255,.25);
   border-radius:5px;
   text-decoration:none;
@@ -62,6 +134,7 @@ body{
   box-shadow: inset 0 1px 0 rgba(255,255,255,.8), 0 4px 14px rgba(0,0,0,.35);
   transition: all .2s ease;
 }
+
 
 .pill:hover{
   border-color: rgba(255,255,255,.6);
@@ -112,37 +185,6 @@ footer{
   color:var(--muted);
   font-size:13px;
   padding:18px 0;
-}
-
-.equations{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:14px 14px;
-  margin:14px 0;
-}
-
-.note{
-  margin-top:10px;
-  color:var(--muted);
-  font-size:14px;
-}
-
-.cta{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  flex-wrap:wrap;
-  border-top:1px solid var(--line);
-  margin-top:16px;
-  padding-top:14px;
-}
-
-mjx-container[jax="CHTML"]{
-  overflow-x:auto;
-  overflow-y:hidden;
-  padding-bottom:2px;
 }
 
 .table-wrap{
