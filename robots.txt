@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://toshiosujino.github.io/sitemap.xml
+Sitemap: https://art-and-science-lab.github.io/sitemap.xml
