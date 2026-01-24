@@ -55,4 +55,16 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://art-and-science-lab.github.io/em_ratio.html</loc>
+    <lastmod>2026-01-24</lastmod>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://art-and-science-lab.github.io/em_ratio_jp.html</loc>
+    <lastmod>2026-01-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
