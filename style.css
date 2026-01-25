@@ -213,3 +213,21 @@ footer{
   flex-direction:column;
   gap:14px;
 }
+
+mjx-container[jax="CHTML"]{
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding-bottom:2px;
+}
+
+mjx-container{
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+mjx-container[display="true"]{
+  display: block;
+  max-width: 100%;
+}
+
