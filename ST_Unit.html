@@ -39,88 +39,127 @@
   <main>
     <div class="wrap">
       <section class="card">
-
         <p>
           In the current International System of Units (SI), the kilogram and the ampere are defined as base units.
-          However, this classification reflects a historically contingent, human-centered choice made for measurement convenience,
-          not a necessity imposed by nature.
-          In this note, We argue that mass and electric charge are not fundamental units but constructed quantities
-          derived from deeper spacetime relations.
+          However, this classification is an institutional convention established for practical measurement convenience and does not represent a necessity of natural science.
+          In this work, we argue that mass and charge are not fundamental quantities, but constructed quantities derived from more primitive spatiotemporal relations.
+          Furthermore, we show that the gravitational constant \(G\), the vacuum permittivity \(\varepsilon_0\), and the vacuum permeability \(\mu_0\) are proportionality constants introduced to preserve the internal consistency of the artificial unit system based on the kilogram and the coulomb, and are not intrinsic fundamental constants of nature (see References).<br>
+          Historically, the unit of mass was first defined, followed independently by the unit of electric charge.
+          Subsequently, the gravitational constant \(G\), the vacuum permittivity \(\varepsilon_0\), and the vacuum permeability \(\mu_0\) were introduced to ensure consistency among physical equations.
+          However, reexamining Newtonian gravitational potential energy and Coulomb potential energy makes it clear that the kilogram and the coulomb are essentially human-defined units rather than natural necessities.<br>
+          At the beginning of <i>A Treatise on Electricity and Magnetism</i> (1873), Maxwell noted that
+          “if mass were defined in an astronomical system of units by its gravitational strength, then the dimensional formula of mass \(M\) would be \(L^3/T^2\).”
         </p>
-
-        <p>
-          Furthermore, We show that the gravitational constant \(G\), the vacuum permittivity \(\varepsilon_0\),
-          and the vacuum permeability \(\mu_0\) function as proportional constants introduced to maintain consistency
-          within the human-defined unit system of kilograms and coulombs, rather than intrinsic constants of nature (see Reference).
-        </p>
-
-        <p>
-          To state the conclusion first: the kilogram is redefined through the \(\delta\)-transformation
-          and expressed as a purely spacetime dimension \(\mathrm{m^3/s^2}\).
-        </p>
-
-        <div class="equations">
+      
+        <hr />
+      
+        <h3>Current gravitational potential energy</h3>
+        <p class="eq">
           \[
-            m_0 = m_e \,\delta \approx 253\ \mathrm{m^3/s^2}
+            E = \frac{G\,m\,M}{r}
           \]
-          \[
-            \delta = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)^2
-          \]
-        </div>
-
-        <p>
-          Likewise, the coulomb (electric charge unit) is redefined via the \(\varepsilon\)-transformation,
-          reducing charge to a spacetime dimension as well.
         </p>
-
-        <div class="equations">
+      
+        <p>
+          If the gravitational constant \(G\) is absorbed into the unit of mass (kilogram), the unit of mass is transformed into the dimension \(m^3/s^2\).
+          In this work, signs are omitted since only dimensional relations among scalar quantities are considered.
+        </p>
+      
+        <h3>Gravitational potential energy with \(G\) absorbed</h3>
+        <p class="eq">
           \[
-            e_0 = e\,\varepsilon \approx 8.45\times 10^{-7}\ \mathrm{m^2/s}
+            E' = \frac{m' M'}{r}, \qquad
+            E' = E\cdot G, \qquad
+            m' = m\cdot G, \qquad
+            M' = M\cdot G
           \]
+        </p>
+      
+        <p>
+          Since gravitational potential energy itself contains the kilogram in its numerator, the same absorption of \(G\) applies.
+          A quantity possessing the same dimensional structure is Coulomb potential energy.
+        </p>
+      
+        <h3>Current Coulomb potential energy</h3>
+        <p class="eq">
           \[
+            E = \frac{k\,q\,Q}{r}
+            = \frac{qQ}{4\pi \varepsilon_0 r}
+            = \frac{qQ\,c^2\,\mu_0}{4\pi r}
+          \]
+        </p>
+      
+        <p>
+          Analogously, we consider absorbing artificial constants into the unit of charge (coulomb).
+          However, since the speed of light \(c\) is a universal constant, it is not absorbed.
+          Moreover, since vacuum permeability contains the kilogram in its dimension, the gravitational constant \(G\) is absorbed simultaneously.
+        </p>
+      
+        <h3>Coulomb potential energy with artificial constants absorbed</h3>
+        <p class="eq">
+          \[
+            E = \frac{q' Q'\,c^2}{r}, \qquad
+            q' = q\sqrt{\frac{\mu_0 G}{4\pi}}, \qquad
+            Q' = Q\sqrt{\frac{\mu_0 G}{4\pi}}
+          \]
+        </p>
+      
+        <p>
+          If the speed of light were also absorbed into the coulomb, the expression would reduce to the Gaussian-unit form.
+          However, retaining \(c\) is essential here.
+          At this stage, the unit of charge becomes \(m^2/s\), and both the kilogram and the coulomb disappear, reduced to derived units composed solely of space and time.
+        </p>
+      
+        <hr />
+      
+        <p><b>From this, a direct relation between the elementary charge and the electron mass is obtained.</b></p>
+      
+        <p class="eq">
+          \[
+            m_e' = e'\,c\,\beta
+          \]
+        </p>
+      
+        <p>
+          Here, \(\beta\) is a dimensionless constant equal to the square root of the ratio between gravitational and Coulomb potential energies.<br>
+          Furthermore, since the conversion factor from coulomb to \(m^2/s\) contains the square root of the kilogram, an additional simplification becomes possible.
+          By absorbing \(\beta^2\) into the kilogram from the outset, the least precise constant, the gravitational constant \(G\), is eliminated from both mass and charge conversion factors.<br>
+          The mass converter \(\mu\) and charge converter \(\varepsilon\) are then defined as follows, yielding the new-unit electron mass \(m_0\) and elementary charge \(e_0\).
+        </p>
+      
+        <p class="eq">
+          \[
+            m_0 = \mu\,m_e, \qquad
+            \mu = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)^2
+          \]
+        </p>
+      
+        <p class="eq">
+          \[
+            e_0 = \varepsilon\,e, \qquad
             \varepsilon = \frac{\mu_0}{4\pi}\left(\frac{e\,c}{m_e}\right)
           \]
-        </div>
-
-        <p class="note">
-          Here, \(c\) is the speed of light, \(e\) is the elementary charge, \(m_e\) is the electron mass,
-          and \(\mu_0\) is the vacuum permeability.
         </p>
-
+      
         <p>
-          As a result, an extremely simple relation emerges—reminiscent of Einstein’s rest-mass energy relation:
+          We refer to this new unit system as the <b>Space-Time (ST) Unit system</b>.
+          In the ST system, physical structures that are hidden in the SI framework become directly visible.
+          In particular, the ST system yields an extremely simple relation between the elementary charge and the electron mass, reminiscent of Einstein’s mass–energy equivalence.
         </p>
-
-        <div class="equations">
+      
+        <p class="eq">
           \[
             m_0 = e_0\,c
           \]
-        </div>
-
-        <p>
-          We call this transformation framework the <strong>Space-Time Unit (ST unit)</strong>.
-          In the ST unit system, the unit structure necessarily collapses onto the electron scale,
-          and the classical electron radius is defined as the fundamental length.
         </p>
-
+      
         <p>
-          The fundamental time is then defined as the time required for light to traverse this classical electron radius.
-          From this fundamental length and fundamental time, the elementary charge, the electron mass,
-          and the electron rest-mass energy are consistently defined.
+          We have long accepted the kilogram and the coulomb as fundamental units without serious question.
+          However, by reexamining artificial units and reconstructing the unit system at the electronic level,
+          previously unseen aspects of physical law emerge with remarkable clarity.
         </p>
-
-        <p>
-          Consequently, by setting this fundamental length and fundamental time equal to unity,
-          a natural unit system necessarily emerges—distinct from the Planck natural units.
-        </p>
-
-        <p>
-          In this way, simply redefining mass and charge—historically introduced as independent quantities—
-          leads to a remarkable simplification of physical formulas, restoring a more intuitive structure
-          to fundamental physics. For detailed derivations and the full theoretical framework, please refer to:
-        </p>
-
-        </section>
+      </section>
+      
 
         <section class="card">
           <h2>Reference</h2>
@@ -154,6 +193,3 @@
   </script>
 </body>
 </html>
-
-
-
