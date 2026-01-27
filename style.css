@@ -227,6 +227,7 @@ footer{
 .table-wrap .muted{
   color:#6b7280;
 }
+
 .col-left{
   display:flex;
   flex-direction:column;
@@ -249,6 +250,7 @@ mjx-container[display="true"]{
   display: block;
   max-width: 100%;
 }
+
 
 
 
