@@ -214,7 +214,13 @@ footer{
   white-space:nowrap;
   padding:8px 10px; 
   border:1px solid #e1e5ea;
-  text-align:left;
+  text-align:left;          /* 1列目は左 */
+}
+
+/* 2列目以降は中央寄せ */
+.table-wrap th:nth-child(n+2),
+.table-wrap td:nth-child(n+2){
+  text-align:center;
 }
 
 /* header */
@@ -228,6 +234,7 @@ footer{
   color:#6b7280;
 }
 
+/* layout helper */
 .col-left{
   display:flex;
   flex-direction:column;
@@ -250,6 +257,7 @@ mjx-container[display="true"]{
   display: block;
   max-width: 100%;
 }
+
 
 
 
