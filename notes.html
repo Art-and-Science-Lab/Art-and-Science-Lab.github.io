@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Notes on the Background of the Two Publications</title>
+  <title>Notes on the Background of the Two Publications | Toshio Sujino</title>
   <link rel="canonical" href="https://art-and-science-lab.github.io/notes.html" />
   <meta name="robots" content="index,follow" />
-  <link rel="stylesheet" href="style.css" />
   <meta name="description" content="Notes on the background and motivation connecting two publications in physics and reproductive medicine." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KMSX0B5WT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -31,7 +32,7 @@
 
   <main>
     <div class="wrap">
-      <article class="card">
+      <section class="card">
 
         <p class="lead">
           I would like to use this page to explain the background and intent of the following two publications:
@@ -39,19 +40,11 @@
           (hereafter referred to as <strong>ST Unit</strong>),
           and
           <em>Comprehensive mathematical modeling of age-dependent oocyte quality and quantity for predicting live birth rate</em>
-          (hereafter referred to as <strong>Math Model</strong>).
-        </p>
-
-        <p>
-          Although these two studies belong to very different fields—physics and reproductive medicine, respectively—they share an important common feature.
-          Both are written from perspectives that are not mainstream within their respective disciplines.
-        </p>
-
-        <p>
-          However, it is precisely because they are not mainstream that these works aim to offer meaningful insights from alternative viewpoints that are often overlooked by conventional approaches.
-        </p>
-
-        <p>
+          (hereafter referred to as <strong>Math Model</strong>).<br>
+          Although these two studies belong to very different fields-physics and reproductive medicine, respectively-they share an important common feature.
+          Both are written from perspectives that are not mainstream within their respective disciplines.<br>
+          However, it is precisely because they are not mainstream that these works aim to offer meaningful insights from alternative viewpoints that are often overlooked by 
+          conventional approaches.<br>
           At first glance, these two studies may appear unrelated. Nevertheless, from my own perspective, there is a clear and consistent conceptual thread connecting them.
           For this reason, on this page I will discuss both works in parallel, highlighting their shared underlying philosophy.
         </p>
@@ -62,8 +55,8 @@
         <p>Both publications are grounded in the following perspectives:</p>
         <ol>
           <li>In nature and in society, there are no perfectly closed systems; consequently, common principles often exist across different academic disciplines.</li>
-          <li>As demonstrated by the Poincaré Conjecture, which could not be resolved by pure mathematics alone, some problems can only be solved by adopting an interdisciplinary perspective and incorporating ideas from multiple fields.</li>
-          <li>As exemplified by the Copernican revolution, changing the point of departure—where one chooses to place the conceptual origin—can transform overly complex laws into surprisingly simple and transparent descriptions.</li>
+          <li>As demonstrated by the Poincar&eacute; Conjecture, which could not be resolved by pure mathematics alone, some problems can only be solved by adopting an interdisciplinary perspective and incorporating ideas from multiple fields.</li>
+          <li>As exemplified by the Copernican revolution, changing the point of departure-where one chooses to place the conceptual origin-can transform overly complex laws into surprisingly simple and transparent descriptions.</li>
         </ol>
         <p>These ideas form the shared intellectual foundation underlying both <strong>ST Unit</strong> and <strong>Math Model</strong>.</p>
 
@@ -75,47 +68,26 @@
         </h3>
 
         <p>
-          In reproductive medicine, statistical hypothesis testing—such as chi-square tests and t-tests for evaluating p-values—is widely used.
+          In reproductive medicine, statistical hypothesis testing-such as chi-square tests and t-tests for evaluating p-values-is widely used.
           In contrast, explicit mathematical modeling using equations is relatively rare.
-          Likewise, data distributions are often summarized using the conventional representation of a normal distribution as “mean ± standard deviation.”
-        </p>
-
-        <p>
-          However, careful inspection of real-world medical data reveals that many distributions deviate substantially from normality.
-        </p>
-
-        <p>
-          In this study, the distribution of AMH (Anti-Müllerian Hormone) levels in women of reproductive age was analyzed using the gamma distribution.
-          The gamma distribution is more general than the normal distribution and is capable of describing a wider range of natural phenomena.
-        </p>
-
-        <p>
+          Likewise, data distributions are often summarized using the conventional representation of a normal distribution as "mean \( \pm \) standard deviation".
+          However, careful inspection of real-world medical data reveals that many distributions deviate substantially from normality.<br>
+          In this study, the distribution of AMH (Anti-M&uuml;llerian Hormone) levels in women of reproductive age was analyzed using the gamma distribution.
+          The gamma distribution is more general than the normal distribution and is capable of describing a wider range of natural phenomena.<br>
           Indeed, the chi-square distribution, which is frequently employed in medical statistics, is itself a special case of the gamma distribution
-          for specific values of the scale parameter α and the shape parameter β.
+          for specific values of the scale parameter \( \alpha \) and the shape parameter \( \beta \).
           Moreover, the normal distribution can be obtained as a limiting case of the gamma distribution, when the shape parameter approaches infinity.
-          In this sense, the gamma distribution constitutes a more general family of distributions that includes the normal distribution as a special case.
-        </p>
-
-        <p>
+          In this sense, the gamma distribution constitutes a more general family of distributions that includes the normal distribution as a special case.<br>
           In physics as well, the radial probability distribution of an electron in the first orbital of the hydrogen atom is described by a gamma distribution.
           Thus, in situations where the distribution peak lies close to zero and where not only the mean but also the mode carries essential information,
-          the gamma distribution represents a particularly natural choice.
-        </p>
-
-        <p>
+          the gamma distribution represents a particularly natural choice.<br>
           In this work, empirical data were functionalized using weighted nonlinear least-squares regression.
           Polynomial regression was deliberately avoided because, when an appropriate model function is chosen,
-          the optimized parameters themselves can carry direct medical meaning.
-        </p>
-
-        <p>
-          This approach is inspired by the historical fact that curve fitting played a crucial role in the discovery of unknown physical constants—such as the Planck constant—
-          and thereby contributed fundamentally to the birth of quantum mechanics.
-        </p>
-
-        <p>
+          the optimized parameters themselves can carry direct medical meaning.<br>
+          This approach is inspired by the historical fact that curve fitting played a crucial role in the discovery of unknown physical constants-such as the Planck constant-
+          and thereby contributed fundamentally to the birth of quantum mechanics.<br>
           The present study is based purely on mathematical and statistical methodology, and therefore does not follow the mainstream analytical framework typically used in reproductive medicine.
-          In line with Stephen Hawking’s well-known remark that “each equation included in a book reduces its sales by 5%,”
+          In line with Stephen Hawking's well-known remark that "each equation included in a book reduces its sales by 5%",
           most of the mathematical formulations were moved to the Supplementary Document.
           Nevertheless, the most essential content of this study is, in fact, concentrated in the Supplementary Document.
         </p>
@@ -128,52 +100,56 @@
         </h3>
 
         <p>
-          Albert Einstein once remarked that “common sense is the collection of prejudices acquired by age eighteen.”
-          From an early age, we are accustomed to expressing mass in units of kilograms, and we rarely question this convention.
-        </p>
-
-        <p>
+          Albert Einstein once remarked that "common sense is the collection of prejudices acquired by age eighteen".
+          From an early age, we are accustomed to expressing mass in units of kilograms, and we rarely question this convention.<br>
           However, as physics has progressed, there has been an increasing recognition that energy, rather than mass, may represent a more fundamental physical concept.
-          The starting point of this research lies in a long-standing, simple question: Is the kilogram truly a fundamental unit?
-        </p>
-
-        <p>
+          The starting point of this research lies in a long-standing, simple question: Is the kilogram truly a fundamental unit?<br>
           This study is based on elementary algebraic operations in unit-system construction and involves only comparisons of scalar quantities,
           without the use of vector calculus or complex mathematical machinery.
-          As a result, it may appear overly simple or unsatisfying to mainstream physicists.
-        </p>
-
-        <p>
+          As a result, it may appear overly simple or unsatisfying to mainstream physicists.<br>
           Nevertheless, the perspective that units such as the kilogram and the coulomb are derived rather than fundamental deserves careful reconsideration.
           In fact, the observation that all physical quantities can be expressed as combinations of space (meter) and time (second)
-          is fully consistent with existing physical theories and may offer a coherent framework for future developments.
-        </p>
-
-        <p>
-          During my university years, the experiments that most strongly influenced my thinking were electron–positron annihilation
+          is fully consistent with existing physical theories and may offer a coherent framework for future developments.<br>
+          During my university years, the experiments that most strongly influenced my thinking were electron-positron annihilation
           and the measurement of the charge-to-mass ratio of the electron.
-          Starting from a basic doubt about the kilogram as a unit, it may be no coincidence that this line of inquiry ultimately led to results consistent with these fundamental experimental observations.
-        </p>
-
-        <p>
+          Starting from a basic doubt about the kilogram as a unit, it may be no coincidence that this line of inquiry ultimately led to results consistent with 
+          these fundamental experimental observations.<br>
           Planck units also represent a fascinating approach to natural unit systems, yet the question of what these units physically signify often remains open.
           In the present framework, the classical electron radius emerges naturally as a reference length,
-          yielding a physically transparent natural unit system centered on the electron.
-        </p>
-
-        <p>
+          yielding a physically transparent natural unit system centered on the electron.<br>
           Although this work is not part of mainstream physics and is deliberately simple in structure,
           I hope it conveys the idea that by slightly shifting the point we take for granted as our conceptual starting point,
           an entirely different view of the physical world may come into focus.
         </p>
 
-      </article>
+      </section>
+        <section class="card"> 
+          <h2>Publications</h2>
+
+          <div class="item">
+          <p class="title">
+              <a href="https://zenodo.org/records/18221233" target="_blank">
+              Space-Time Unit System for Unifying Gravitational Mechanics, Electromagnetism and Quantum Physics
+              </a>
+          </p>
+          <p class="meta">Preprint</p>
+          </div>
+
+          <div class="item">
+          <p class="title">
+              <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1595970/full" target="_blank">
+              Comprehensive mathematical modeling of age-dependent oocyte quality and quantity for predicting live birth rate
+              </a>
+          </p>
+          <p class="meta">Original Article</p>
+          </div>
+      </section>
     </div>
   </main>
 
   <footer>
     <div class="wrap">
-      © <span id="y"></span> Toshio Sujino · Hosted on GitHub Pages
+      © <span id="y"></span> 2026 Art & Science Lab. All rights reserved.
     </div>
   </footer>
 
