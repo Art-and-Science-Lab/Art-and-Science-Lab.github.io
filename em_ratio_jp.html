@@ -54,68 +54,70 @@
     <div class="wrap">
 
       <section>
-
+      
         <p>
-          私がウェスタンワシントン大学在学中に強く印象に残っている実験として、光速を実測する実験と、電子の素電荷‐電子質量比（<span class="math">\(e/m_e\)</span>）を測定する実験がある。
-          とりわけ J. J. Thomson（1897年）による陰極線（cathode ray）を用いた測定は、電場 <span class="math">\(E\)</span>、磁場 <span class="math">\(B\)</span>、および電子ビーム軌道の曲率半径 <span class="math">\(r\)</span> を用いて、次式で記述される：
+          私がウェスタンワシントン大学在学中に強く印象に残っている実験として、光速を実測する実験と、電子の素電荷‐電子質量比（\(e/m_e\)）を測定する実験がある。
+          とりわけ J. J. Thomson（1897年）による陰極線（cathode ray）を用いた測定は、電場 \(E\)、磁場 \(B\)、および電子ビーム軌道の曲率半径 \(r\) を用いて、次式で記述される：
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \frac{e}{m_e}=\frac{E}{B^2 r}
           \]
         </p>
-
+      
         <figure>
-        <img src="em_ratio.png"
-            alt="Schematic of the cathode ray tube with crossed E and B fields and the curvature radius r."
-            style="max-width:100%; height:auto;" />
-        <figcaption>Fig.1. Schematic of a cathode ray tube with crossed <span class="math">\(E\)</span> and <span class="math">\(B\)</span> fields and the curvature radius <span class="math">\(r\)</span>.</figcaption>
+          <img src="em_ratio.png"
+               alt="Schematic of the cathode ray tube with crossed E and B fields and the curvature radius r."
+               style="max-width:100%; height:auto;" />
+          <figcaption>
+            Fig.1. Schematic of a cathode ray tube with crossed \(E\) and \(B\) fields and the curvature radius \(r\).
+          </figcaption>
         </figure>
-
+      
         <p>
-          近年では、ペニングトラップ（Penning trap）をはじめとする精密測定法により、<span class="math">\(e/m_e\)</span> は小数点以下10桁級の精度で決定されている。
+          近年では、ペニングトラップ（Penning trap）をはじめとする精密測定法により、\(e/m_e\) は小数点以下10桁級の精度で決定されている。
           現在の電子の素電荷‐電子質量比は
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \frac{e}{m_e}=1.75882001076(89)\times 10^{11}\ \mathrm{C/kg}
           \]
         </p>
-
+      
         <p>
           以下では、典型的な実験室スケールの値を仮定し、式のオーダー感を確認する。
-          たとえば <span class="math">\(E=2\times10^4\ \mathrm{N/C}\)</span>、<span class="math">\(B=1\ \mathrm{mT}\)</span> とすると、
+          たとえば \(E=2\times10^4\ \mathrm{N/C}\)、\(B=1\ \mathrm{mT}\) とすると、
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             r=\frac{E}{B^2(e/m_e)}
             =\frac{2\times10^4}{(1\ \mathrm{mT})^2\cdot 1.75882001\times10^{11}}
             =11.371260205\ \mathrm{cm}
           \]
         </p>
-
+      
         <p>
-          となり、曲率半径 <span class="math">\(r\)</span> は約 11.4 cm 程度の現実的な値になる。
+          となり、曲率半径 \(r\) は約 11.4 cm 程度の現実的な値になる。
         </p>
-
+      
         <hr />
-
+      
         <h3>ST単位系による再解釈</h3>
-
+      
         <p>
-          我々は、ニュートン力学における重力の式とクーロン力の式に立ち返り、万有引力定数 <span class="math">\(G\)</span>、真空の誘電率 <span class="math">\(\varepsilon_0\)</span>、真空の透磁率 <span class="math">\(\mu_0\)</span> の役割を再考してきた。
+          我々は、ニュートン力学における重力の式とクーロン力の式に立ち返り、万有引力定数 \(G\)、真空の誘電率 \(\varepsilon_0\)、真空の透磁率 \(\mu_0\) の役割を再考してきた。
           その結果、キログラムおよびクーロンは人為的に定められた単位であり、本質的には「長さ（m）」と「時間（s）」の組み合わせからなる派生単位として表現できることを提唱している。
           我々はこの再定義体系を Space-Time（ST）単位系と総称する（Reference 参照）。
         </p>
-
+      
         <p>
           ST単位系では、キログラムとクーロンはそれぞれ変換係数（変換子）により次のように変換される：
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \delta\cdot \mathrm{kg}=2.780252259\times10^{23}\ \mathrm{m^3/s^2}
           \]
@@ -123,22 +125,22 @@
             \varepsilon\cdot \mathrm{C}=5.272809743\times10^{12}\ \mathrm{m^2/s}
           \]
         </p>
-
+      
         <p>
-          電場 <span class="math">\(E\)</span> と磁場 <span class="math">\(B\)</span> はいずれも次元の中に <span class="math">\(\mathrm{kg}\)</span> と <span class="math">\(\mathrm{C}\)</span> を含むため、ST単位へ変換するには上記の係数を適用すればよい。
-          すなわち、先の <span class="math">\(E\)</span>、<span class="math">\(B\)</span> に対して
+          電場 \(E\) と磁場 \(B\) はいずれも次元の中に \(\mathrm{kg}\) と \(\mathrm{C}\) を含むため、ST単位へ変換するには上記の係数を適用すればよい。
+          すなわち、先の \(E\)、\(B\) に対して
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             E_0=E\cdot\frac{\delta}{\varepsilon},\qquad
             B_0=B\cdot\frac{\delta}{\varepsilon}
           \]
         </p>
-
+      
         <p>とおくと、数値的には</p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             E_0=
             2\times10^4\cdot
@@ -152,24 +154,24 @@
             =5.272809743\times10^{16}\ \mathrm{m/s^2}
           \]
         </p>
-
+      
         <p>
-          を得る。ここで <span class="math">\(E_0\)</span>、<span class="math">\(B_0\)</span> はそれぞれ ST単位に変換した電場および磁場である。
+          を得る。ここで \(E_0\)、\(B_0\) はそれぞれ ST単位に変換した電場および磁場である。
         </p>
-
+      
         <p>
           次に、Thomson の式を用いて、素電荷‐電子質量比の逆数を ST単位系で評価する。すなわち
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \frac{m_0}{e_0}=\frac{B_0^2 r}{E_0}
           \]
         </p>
-
+      
         <p>に先の値を代入すると</p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \frac{m_0}{e_0}
             =
@@ -179,45 +181,46 @@
             2.9979246\times10^{8}\ \mathrm{m/s}
           \]
         </p>
-
+      
         <p>
-          となり、光速 <span class="math">\(c\)</span> と小数点以下7桁まで一致する値が得られる。
+          となり、光速 \(c\) と小数点以下7桁まで一致する値が得られる。
           すなわち ST単位系では
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             c=\frac{m_0}{e_0}
           \]
         </p>
-
+      
         <p>
           が成り立つことになり、上の一致はこの関係の帰結として理解できる。
         </p>
-
+      
         <hr />
-
+      
         <h3>Penning trap と周波数測定の解釈</h3>
-
+      
         <p>
-          さらに、ペニングトラップ法では <span class="math">\(e/m_e\)</span> は磁場と周波数測定を通じて決定される。
-          ST単位系では <span class="math">\(c\)</span> は不変定数であるため、角周波数 <span class="math">\(\omega_f\)</span> は磁場 <span class="math">\(B_0\)</span> のみにより
+          さらに、ペニングトラップ法では \(e/m_e\) は磁場と周波数測定を通じて決定される。
+          ST単位系では \(c\) は不変定数であるため、角周波数 \(\omega_f\) は磁場 \(B_0\) のみにより
         </p>
-
-        <p class="math">
+      
+        <p class="eq">
           \[
             \omega_f=\frac{B_0}{c}
           \]
         </p>
-
+      
         <p>
           と表される。したがって ST単位系の観点からは、Thomson の陰極線実験も、ペニングトラップによる精密測定も、いずれも別の角度から光速に関わる量を測定していたことになる。
         </p>
-
+      
         <p>
           我々は、コペルニクス以降およそ500年にわたり、質量を絶対的な基本単位として扱ってきた。
           しかしキログラムもクーロンも本質的には人為的な単位であり、これらを ST単位で再定義することで、物理法則の新たな側面が見えてくる。
         </p>
+      
       </section>
 
       <section class="card">
@@ -248,3 +251,4 @@
   </script>
 </body>
 </html>
+
