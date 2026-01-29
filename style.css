@@ -276,3 +276,12 @@ mjx-container[display="true"]{
 .next-block .next-link:hover{
   text-decoration:underline;
 }
+
+.eq{
+  margin: 16px 0;
+  text-align: center;
+}
+
+.eq mjx-container[display="true"]{
+  font-size: 1.05em;
+}
