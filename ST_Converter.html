@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>SI ⇔ ST ⇔ ST Natural Unit Converter</title>
+        <title>SI - ST - ST Natural Unit Converter</title>
         <link rel="canonical" href="https://art-and-science-lab.github.io/ST_Converter.html" />
         <meta name="robots" content="index,follow" />
-        <meta name="description" content="Interactive converter for SI ⇔ ST ⇔ ST natural unit systems based on the Space-Time Unit System. Convert physical quantities and constants between SI units and the ST framework, where mass and charge are derived from space-time relations." />
+        <meta name="description" content="Interactive converter for SI - ST - ST natural unit systems based on the Space-Time Unit System. Convert physical quantities and constants between SI units and the ST framework, where mass and charge are derived from space-time relations." />
         <link rel="stylesheet" href="converter.css" />
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KMSX0B5WT"></script>
@@ -21,14 +21,14 @@
     <body>
         <header class="topHeader">
             <div class="wrap">
-                <h1>SI ⇔ ST ⇔ ST Natural Units Converter</h1>
+                <h1>SI \(\Leftrightarrow\) ST \(\Leftrightarrow\) ST Natural Units Converter</h1>
                 <div class="muted">
                     After selecting a unit, enter a value in either the SI, ST, or ST natural unit system to automatically convert between them.<br>
                     You can also select a physical constant to calculate the corresponding ST and ST natural values based on the known SI value.
                 </div>
                 <div class="links">
                     <a class="pill" href="index.html">Home</a>
-                    <a class="pill" href="ST_unit.html">ST Unit</a>
+                    <a class="pill" href="ST_Unit.html">ST Unit</a>
                     <a class="pill" href="https://zenodo.org/records/18221233" target="_blank" rel="noopener">Reference</a>
                 </div>
             </div>
@@ -48,7 +48,10 @@
             </div>
 
             <div id="customBox" class="card" style="display:none; margin-top:12px;">
-            <div class="muted"> Custom: Enter integer exponents for <span class="mono">kgᵃ·Cᵇ·mᶜ·sᵈ</span></div>
+            <div class="muted">
+                Custom: Enter integer exponents for 
+                <span class="mono">\( \mathrm{kg}^a \cdot \mathrm{C}^b \cdot \mathrm{m}^c \cdot \mathrm{s}^d \)</span>
+            </div>
             <div class="row" style="margin-top:10px;">
                 <div class="col"><label>a (kg)</label><input id="a" value="0"></div>
                 <div class="col"><label>b (C)</label><input id="b" value="0"></div>
@@ -62,7 +65,7 @@
                 <label>SI Unit</label>
                 <div class="inputWrap">
                 <input id="siValue" placeholder="e.g. 1.23e-4" />
-                <span class="unitLabel" id="siUnit">—</span>
+                <span class="unitLabel" id="siUnit">-</span>
                 </div>
             </div>
 
@@ -70,7 +73,7 @@
                 <label>ST Unit</label>
                 <div class="inputWrap">
                 <input id="stValue" placeholder="e.g. 1.23e-4" />
-                <span class="unitLabel" id="stUnit">—</span>
+                <span class="unitLabel" id="stUnit">-</span>
                 </div>
             </div>
 
@@ -78,7 +81,7 @@
                 <label>ST Natural Unit</label>
                 <div class="inputWrap">
                 <input id="stnValue" placeholder="e.g. 1.23e-4" />
-                <span class="unitLabel" id="stnUnit">—</span>
+                <span class="unitLabel" id="stnUnit">-</span>
                 </div>
             </div>
             </div>
@@ -88,7 +91,7 @@
                 <script src="ST_Converter.js"></script>
         <footer>
           <div class="wrap">
-            © <span id="y"></span> Art & Science Lab
+            © <span id="y"></span> 2026 Art & Science Lab. All rights reserved.
           </div>
         </footer>
         <script>
