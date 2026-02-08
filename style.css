@@ -285,3 +285,80 @@ mjx-container[display="true"]{
 .eq mjx-container[display="true"]{
   font-size: 1.05em;
 }
+
+.portrait-group {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.portrait {
+  text-align: center;
+  max-width: 220px;
+}
+
+.portrait img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.portrait figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.chart-pair {
+  display: flex;
+  gap: 20px;
+}
+
+/* PC（横並び） */
+.chart-box {
+  flex: 1;
+}
+
+.chart-box img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* スマホでは縦並び */
+@media (max-width: 768px) {
+  .chart-pair {
+    flex-direction: column;
+  }
+}
+
+.single-chart {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.single-chart img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.single-chart figcaption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.single-chart {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.single-chart figcaption {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+}
