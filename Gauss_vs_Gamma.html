@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Normal (Gaussian) Distribution vs. Gamma Distribution | Art &amp; Science Lab</title>
+  <link rel="canonical" href="https://art-and-science-lab.github.io/Gauss_vs_Gamma.html" />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="A comparison of the normal (Gaussian) and gamma distributions, connecting chi-square distribution, the hydrogen 1s electron radial probability, and AMH distributions to explore bridges between statistics, physics, and reproductive medicine.">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-5KMSX0B5WT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-5KMSX0B5WT');
+  </script>
+</head>
+
+<body class="home">
+  <header>
+    <div class="wrap">
+      <div class="top">
+        <div>
+          <h1>Normal vs. Gamma Distribution</h1>
+          <div class="role">Statistics | Probability | Distributions</div>
+          <div class="links">
+            <a class="pill" href="index.html">Home</a>
+            <a class="pill" href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1595970/full" target="_blank" rel="noopener">Reference</a>
+            <a class="pill" href="Gauss_vs_Gamma_jp.html">Japanese</a>
+          </div>
+          <p class="small">Mathematics | Physics | Reproductive Medicine</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<main>
+  <div class="wrap">
+
+    <section class="card">
+      <p>
+        In statistics, the most widely known and most frequently used distribution is probably the normal distribution (Gaussian distribution). 
+        In bioscience and medical statistics as well, it is common practice to describe data using the expression 
+        “mean ± standard deviation.” According to the central limit theorem, the sum of independent random variables 
+        approaches a normal distribution regardless of the original form of the distribution. For example, it is known 
+        that repeated convolution of a rectangular function converges to a Gaussian distribution in the limit. 
+        Because of this powerful property, the normal distribution sometimes appears to be the “final form” of all distributions. 
+        As a result, many studies have unconsciously adopted the approach of “assuming normality for the time being.”<br>
+        However, when actual observational data are examined carefully, numerous distributions exhibit shapes 
+        that differ significantly from the normal distribution. For instance, distributions that take only non-negative values, 
+        peak near lower values, and possess a long decaying tail toward higher values are observed in biology, medicine, economics, 
+        engineering, and many other fields. Such non-negative and right-skewed continuous distributions can be naturally described 
+        by the gamma distribution from a statistical perspective.
+        From this viewpoint, the gamma distribution is often a more natural choice when describing non-negative continuous quantities. 
+        Nevertheless, in both statistical education and practical applications, the normal distribution overwhelmingly dominates in 
+        recognition and frequency of use, while the gamma distribution receives comparatively less attention. 
+        Therefore, in this article, we aim to reexamine the properties and significance of the gamma distribution 
+        in comparison with the normal distribution.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>1. Historical Background</h2>
+      <p>
+        Behind the normal distribution and the gamma distribution stand two giants in the history of mathematics.<br>
+        The normal distribution was systematized by the German mathematician Carl Friedrich Gauss (1777-1855) 
+        in the context of analyzing astronomical observational errors. Introduced to explain variability in measurements, 
+        it later became the standard “error distribution” and, through its connection with the central limit theorem, 
+        established a position that appears almost universal in nature.<br>
+        On the other hand, the “gamma function,” which forms the mathematical foundation of the gamma distribution, 
+        was introduced in the 18th century by the Swiss mathematician Leonhard Euler (1707-1783). 
+        The gamma function was originally developed as an extension of the factorial function—defined only for integers—into the realm of real numbers. 
+        It was later applied to waiting-time distributions and stochastic processes, and was formalized as the gamma distribution in the late 19th century.
+      </p>
+
+      <figure class="portrait-group">
+        <figure class="portrait">
+          <img src="Gauss.png" alt="Carl Friedrich Gauss (1777-1855)">
+          <figcaption>Carl Friedrich Gauss (1777-1855)</figcaption>
+        </figure>
+
+        <figure class="portrait">
+          <img src="Euler.png" alt="Leonhard Euler (1707-1783)">
+          <figcaption>Leonhard Euler (1707-1783)</figcaption>
+        </figure>
+      </figure>
+    </section>
+
+    <section class="card">
+      <h2>2. Comparison of Distribution Shapes</h2>
+      <p>
+        While textual explanations and mathematical expressions are important, differences between distributions 
+        are often more intuitively understood when visualized graphically. In particular, the contrast between 
+        the normal and gamma distributions becomes immediately apparent when their shapes are compared. 
+        Below are the probability density functions of both distributions.
+      </p>
+
+      <figure class="chart-pair">
+        <div class="chart-box">
+          <img src="Normal Distribution.png"
+               alt="Normal distribution"
+               class="chart-image">
+        </div>
+
+        <div class="chart-box">
+          <img src="Gamma Distribution.png"
+               alt="Gamma distribution"
+               class="chart-image">
+        </div>
+      </figure>
+
+      <p>
+        The symmetry of the normal distribution appears aesthetically pleasing. 
+        In contrast, the asymmetric shape of the gamma distribution may initially feel somewhat unfamiliar. 
+        For this reason, we may have unconsciously favored symmetry and accepted the normal distribution as the “standard form.”<br>
+        As shown in the graph, in a Gaussian distribution the mean, median, and mode coincide exactly. 
+        In a gamma distribution, however, these values generally differ, with mode < median < mean.<br>
+        In the normal distribution figure, the range corresponding to one standard deviation is shaded. 
+        The region “mean ± standard deviation” contains approximately 68.3% of the data. 
+        Specifically, this corresponds to the 15.9th percentile and the 84.1st percentile.<br>
+        An interesting question arises here: why do we habitually use this seemingly awkward 68.3% interval 
+        instead of rounded values such as 5%, 95%, or 90% confidence intervals? 
+        In fact, 68.3% has no special probabilistic significance. 
+        It is merely a consequence that automatically arises from the mathematical parameter 
+        called the standard deviation within the normal distribution formula. 
+        The standard deviation determines the shape of the normal distribution mathematically, 
+        and the ±σ interval emerges naturally from its internal structure. 
+        Yet we routinely use this interval without consciously considering its mathematical origin.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>2. Comparison of Distribution Functions</h2>
+      <p>
+        As shown in the previous section, the standard deviation \( \sigma \) is the mathematical parameter 
+        that determines the shape of the normal distribution, and its probability density function is expressed as follows:
+      </p>
+
+      <div class="eq">
+        \[
+        f(x)=\frac{1}{\sigma\sqrt{2\pi}}
+        \exp\!\left(
+        -\frac{(x-\mu)^2}{2\sigma^2}
+        \right)
+        \]
+      </div>
+
+      <p>
+        For those who feel uneasy about mathematical formulas, this expression may appear complicated. 
+        In reality, however, the normal distribution is completely determined by just two familiar parameters: 
+        the mean \( \mu \) and the standard deviation \( \sigma \).<br>
+        Similarly, the gamma distribution is also defined by two parameters: 
+        the shape parameter \( \alpha \) and the scale parameter \( \beta \).
+      </p>
+
+      <div class="eq">
+        \[
+        f(x)=
+        \frac{x^{\alpha-1}}{\beta^{\alpha}\Gamma(\alpha)}
+        \exp\!\left(-\frac{x}{\beta}\right)
+        \]
+      </div>
+
+      <p>
+        At first glance, this formula may appear even more complicated than that of the normal distribution. 
+        In particular, the function \( \Gamma(\alpha) \) (the gamma function), as mentioned earlier, 
+        was introduced by Euler as an extension of the factorial function into the real-number domain. 
+        This structural complexity in the mathematical expression may be one reason why the gamma distribution 
+        has not become as widespread as the normal distribution.<br>
+        Furthermore, the shape parameter \( \alpha \) and the scale parameter \( \beta \) do not convey 
+        an immediately intuitive meaning in the same way that the standard deviation \( \sigma \) does. 
+        This lack of intuitive clarity may also have hindered the broader adoption of the gamma distribution.<br>
+        However, in fact, \( \alpha \) and \( \beta \) can be determined from familiar descriptive statistics: 
+        the mean and the mode. The mean of the gamma distribution is given by 
+        \( mean = \alpha \beta \), and the mode is given by 
+        \( mode = (\alpha - 1)\beta \). 
+        In other words, once the peak of the distribution (the mode) and the mean are known, 
+        the shape of the gamma distribution is uniquely determined.<br>
+        Therefore, in general-purpose numerical tools such as spreadsheets, instead of directly entering 
+        \( \alpha \) and \( \beta \), one could input the mean and the mode. 
+        This approach may allow for more intuitive handling and could potentially broaden the practical use of the gamma distribution.<br>
+        Even income distributions in everyday life exhibit a shape that peaks at lower values and 
+        has a long decaying tail toward higher values. In such distributions, the mean may deviate significantly 
+        from what most individuals actually experience, leading to the argument that 
+        “the median better reflects reality.”<br>
+        In the gamma distribution, the relationship between the mode and the mean itself determines the shape of the distribution. 
+        Just as the expression “mean ± standard deviation” has become standard in the context of the normal distribution, 
+        perhaps standardizing expressions such as “mode (mean)” in the context of the gamma distribution 
+        could help us more naturally understand asymmetric distributions.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>3. Versatility of the Gamma Distribution</h2>
+      <p>
+        In this section, we discuss the versatility of the gamma distribution 
+        by introducing several representative distributions.
+      </p>
+
+      <b>3.1 The \( \chi^2 \) Distribution</b>
+      <p>
+        In bioscience and medical research, the \( \chi^2 \) test is frequently used. 
+        Its theoretical foundation is the \( \chi^2 \) distribution. 
+        In fact, the \( \chi^2 \) distribution is nothing other than a special case of the gamma distribution.<br>
+        If the degrees of freedom are denoted by \( k \), 
+        then setting \( \alpha = k/2 \) and \( \beta = 2 \) in the gamma distribution 
+        yields exactly the \( \chi^2 \) distribution.
+      </p>
+
+      <div class="eq">
+        \[
+        f(x)
+        =
+        \frac{x^{\frac{k}{2}-1}}
+        {2^{k/2}\Gamma\!\left(\frac{k}{2}\right)}
+        \exp\!\left(-\frac{x}{2}\right)
+        \]
+      </div>
+
+      <p>
+        An important point is that as the degrees of freedom \( k \) increase, 
+        the \( \chi^2 \) distribution gradually becomes more symmetric and approaches the normal distribution. 
+        This property follows from the central limit theorem. 
+        In the limit where the shape parameter \( \alpha \) becomes large, 
+        the gamma distribution asymptotically approaches the normal distribution. 
+        Therefore, the \( \chi^2 \) distribution can be regarded as a “special form” of the gamma distribution, 
+        while the normal distribution can be viewed as its “limiting form.”
+      </p>
+
+      <b>3.2 Distribution of Anti-Müllerian Hormone (AMH) in Women of Reproductive Age</b>
+      <p>
+        We hypothesized that the distribution of anti-Müllerian hormone (AMH) 
+        in women of reproductive age follows a gamma distribution, 
+        and we attempted mathematical modeling based on this assumption (see Reference). 
+        It is well known that AMH levels decline with age as women approach menopause. 
+        However, similar to income distributions, the distribution of AMH within a given age group 
+        exhibits an asymmetric shape: a peak at lower values and a long tail toward higher values. 
+        As a result, analyses based solely on the mean AMH value often created discrepancies 
+        between statistical interpretation and patients' subjective perception of their own status.<br>
+        Therefore, using data from approximately 7,000 individuals, 
+        we performed a two-dimensional weighted nonlinear least squares regression 
+        with the gamma distribution function as the model function 
+        to mathematically model the AMH distribution. 
+        The results for ages 27 to 45 are shown below.
+      </p>
+
+      <figure class="single-chart">
+        <img src="AMH.png"
+            alt="AMH distribution"
+            class="chart-image">
+        <figcaption>
+          Distribution of AMH values (Ages 27-45)
+        </figcaption>
+      </figure>
+
+      <p>
+        Whereas AMH distributions were traditionally expressed using the mean and standard deviation, 
+        applying the gamma distribution allows for a more accurate representation 
+        of the asymmetric structure observed in reality.
+      </p>
+
+      <b>3.3 The First Electron Orbit of the Hydrogen Atom in the Bohr Model</b>
+      <p>
+        Gerard 't Hooft, who received the Nobel Prize in Physics in 1999, 
+        remarked regarding the foundations of quantum mechanics that 
+        what is commonly called quantum mechanics today is essentially a probabilistic and statistical framework. 
+        Although the examples discussed thus far have focused on medical applications, 
+        it is fascinating that medicine, which routinely employs statistical analysis, 
+        and theoretical physics, which deals with the microscopic world, 
+        are connected through the shared language of probability and distributions.<br>
+        In 1913, Niels Bohr proposed the hydrogen atom model 
+        and theoretically derived the radius of the first electron orbit. 
+        This achievement revolutionized our understanding of atomic structure, 
+        and he received the Nobel Prize in Physics in 1922. 
+        Bohr assumed that the electron moves in a circular orbit around the nucleus, 
+        balancing Coulomb force with centripetal force, and imposed the quantization condition of angular momentum:
+      </p>
+
+      <div class="eq">
+        \[
+        m v r = \dfrac{n h}{2\pi}
+        \]
+      </div>
+
+      <p>
+        Using this relation, he derived the radius of the first orbit (\( n = 1 \)), 
+        which is given by:
+      </p>
+
+      <div class="eq">
+        \[
+        r_B =
+        \frac{4\pi \varepsilon_0 \hbar^2}
+        {m_e e^2}
+        \]
+      </div>
+
+      <p>
+        This quantity is known as the Bohr radius. 
+        However, in 1926, Max Born proposed that the position of the electron 
+        in the hydrogen atom can only be described probabilistically until observed. 
+        That is, it is not the wave function itself but its squared magnitude 
+        \( |\psi|^2 \) that represents the probability density. 
+        This probabilistic interpretation became foundational to quantum mechanics, 
+        though Albert Einstein famously objected, stating, “God does not play dice.” 
+        Thus began a major debate about the fundamental nature of quantum mechanics.<br>
+        The wave function for the first orbit (ground state) of the hydrogen atom 
+        is obtained by solving the Schrödinger equation. 
+        For the state corresponding to principal quantum number \( n = 1 \) 
+        and angular momentum quantum number \( l = 0 \), 
+        the wave function is given by:
+      </p>
+
+      <div class="eq">
+        \[
+        \psi_{1s}(r)
+        =
+        \frac{1}{\sqrt{\pi r_B^{3}}}
+        \exp\!\left(-\frac{r}{r_B}\right)
+        \]
+      </div>
+
+      <p>
+        Here, \( r_B \) denotes the Bohr radius. 
+        Although the wave function itself is not directly observable, 
+        its squared magnitude
+      </p>
+
+      <div class="eq">
+        \[
+        \left|\psi_{1s}(r)\right|^2
+        =
+        \frac{1}{\pi r_B^{3}}
+        \exp\!\left(-\frac{2r}{r_B}\right)
+        \]
+      </div>
+
+      <p>
+        gives the probability density that the electron exists at distance \( r \). 
+        Considering that space is three-dimensional, 
+        the actual probability distribution for the electron being at distance \( r \) 
+        is obtained by multiplying by the volume element \( 4\pi r^2 \, dr \):
+      </p>
+
+      <div class="eq">
+        \[
+        P(r)\,dr
+        =
+        4\pi r^2
+        \left|\psi_{1s}(r)\right|^2
+        \,dr
+        =
+        \frac{4}{r_B^{3}}
+        \, r^2
+        \exp\!\left(-\frac{2r}{r_B}\right)
+        \,dr
+        \]
+      </div>
+
+      <p>
+        This expression exactly coincides with a gamma distribution 
+        when \( \alpha = 3 \) and \( \beta = r_B/2 \).
+      </p>
+
+      <div class="eq">
+        \[
+        f(r)
+        =
+        \frac{ r^{2} }
+        { \left(r_B/2\right)^3 \Gamma(3) }
+        \exp\!\left(-\frac{r}{\,r_B/2\,}\right)
+        \]
+      </div>
+
+      <p>
+        In other words, even the probability distribution describing the electron 
+        in the hydrogen atom follows a gamma-type function.<br>
+        Importantly, the Bohr radius \( r_B \) coincides with the peak of this distribution, 
+        that is, the mode of the gamma distribution. 
+        Meanwhile, the mean of this distribution is \( (3/2) r_B \), 
+        which is larger than the mode. 
+        The graph of this probability distribution is shown below.
+      </p>
+
+      <figure class="single-chart">
+        <div class="chart-box" style="height:320px;">
+          <canvas id="chartHydrogen"
+                  aria-label="Hydrogen 1s radial probability (Gamma-shaped)"
+                  role="img">
+          </canvas>
+        </div>
+
+        <figcaption>
+          Radial probability distribution of the electron in the hydrogen atom
+        </figcaption>
+      </figure>
+
+      <p>
+        Thus, although the most probable distance of the electron is \( r_B \), 
+        the mean value lies farther outward. 
+        This is due to the asymmetric shape with a long tail toward larger values.<br>
+        This fact suggests that when a probability distribution is gamma-shaped, 
+        the mode may serve as a more intuitive and physically meaningful representative value than the mean.
+      </p>
+    </section>
+
+
+    <section class="card">
+      <h2>Afterword</h2>
+      <p>
+        In this article, we have explored the connection between medicine and physics 
+        through the lens of the gamma distribution. 
+        If quantum mechanics is fundamentally a probabilistic and statistical framework, 
+        might similar quantum-mechanical analogies apply to probabilistic phenomena 
+        such as live birth rates and AMH distributions in reproductive medicine?<br>
+        In fact, my wife and I were blessed with our second child through assisted reproductive technology. 
+        As someone whose profession involves statistical analysis, 
+        I was told by my wife, “I don't believe in statistics. If I have a child, it's 100%; if I don't, it's 0%.” 
+        A possibility that once existed as a probability distribution 
+        collapses to either 100% or 0% the moment it is observed. 
+        The same applies to the AMH distribution described above. 
+        Initially, it exists as a probability distribution, 
+        but at the moment a measurement is obtained, 
+        it collapses to a single measured value. 
+        Mathematically, this behavior resembles that of a delta function. 
+        Repeating measurements reconstructs the original gamma distribution. 
+        This structure may be analogously understood 
+        as resembling the collapse of the wave function in quantum mechanics.<br>
+        In quantum mechanics, we are often told that 
+        “extraordinary phenomena beyond common sense occur in the microscopic world.” 
+        However, even in the macroscopic world of human society, 
+        might fundamentally similar structures exist? 
+        Statistics itself may be a framework with dual characteristics: 
+        governed by probabilistic laws as a whole, 
+        yet containing randomness and free diversity in individual events.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Reference</h2>
+      <p class="note">
+        Note: This page provides a summary as an introduction to the theory. 
+        For detailed mathematical models and statistical analysis methods, 
+        please refer to the publications below.
+      </p>
+
+      <p>
+        <a href="https://www.frontiersin.org/journals/endocrinology/articles/10.3389/fendo.2025.1595970/full" target="_blank" rel="noopener">
+          <b>Comprehensive mathematical modeling of age-dependent oocyte quality and quantity for predicting live birth rate</b>
+        </a>
+      </p>
+
+      <p>
+        <a href="https://kameda-ivf.com/IVF_Calculator_en.php" target="_blank" rel="noopener">
+          <b>Simulator : Predicting Live Birth Rate per Oocyte Retrieval</b>
+        </a>
+      </p>
+
+      <p>
+        <a href="https://kameda-ivf.com/SVBT_Calculator_en.php" target="_blank" rel="noopener">
+          <b>Simulator : Predicting Live Birth Rate per Embryo Transfer</b>
+        </a>
+      </p>
+    </section>
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> 2026 Art & Science Lab. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script>
+    const rB = 1;
+
+    // Gamma params for 1s radial probability
+    const alphaH = 3;
+    const betaH  = rB / 2;
+
+    // mode and mean
+    const rMode = rB;        // = 1
+    const rMean = 1.5 * rB;  // = 1.5
+
+    function linspace(a, b, n) {
+      const arr = [];
+      const step = (b - a) / (n - 1);
+      for (let i = 0; i < n; i++) arr.push(a + step * i);
+      return arr;
+    }
+
+    // Unnormalized shape is fine for visualization: P(r) ∝ r^2 exp(-2r/rB)
+    // (This is exactly the gamma-shape part; scaling constant doesn't affect mode/mean positions.)
+    function P1s_shape(r, rB) {
+      if (r < 0) return 0;
+      return (r * r) * Math.exp(-2 * r / rB);
+    }
+
+    // data range in units of rB
+    const xs = linspace(0, 6 * rB, 501);
+    const ys = xs.map(r => P1s_shape(r, rB));
+    const yMax = Math.max(...ys);
+
+    // main curve
+    const dataCurve = xs.map((r, i) => ({ x: r, y: ys[i] }));
+
+    // dashed vertical lines (from y=0 to y=yAtX)
+    function yAt(x) {
+      // find nearest index
+      const idx = Math.min(xs.length - 1, Math.max(0, Math.round((x - xs[0]) / (xs[1] - xs[0]))));
+      return ys[idx];
+    }
+    const yMode = yAt(rMode);
+    const yMean = yAt(rMean);
+
+    const dataVMode = [{ x: rMode, y: 0 }, { x: rMode, y: yMode }];
+    const dataVMean = [{ x: rMean, y: 0 }, { x: rMean, y: yMean }];
+
+    // label plugin (simple, no annotation)
+    const hydroLabels = {
+      id: 'hydroLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx, scales } = chart;
+
+        const xScale = scales.x;
+        const yScale = scales.y;
+
+        const xM = xScale.getPixelForValue(rMode);
+        const xE = xScale.getPixelForValue(rMean);
+
+        const yM = yScale.getPixelForValue(yMode);
+        const yE = yScale.getPixelForValue(yMean);
+
+        ctx.save();
+        ctx.font = '12px sans-serif';
+        ctx.fillStyle = '#111';
+
+        // place labels slightly above the line tops
+        ctx.fillText('Mode = r\u1D66', xM + 6, yM - 8);
+        ctx.fillText('Mean = (3/2) r\u1D66', xE + 6, yE - 8);
+        ctx.restore();
+      }
+    };
+
+    const ctxH = document.getElementById('chartHydrogen');
+
+    new Chart(ctxH, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: dataCurve,
+            borderWidth: 2,
+            pointRadius: 0,
+            fill: false
+          },
+          {
+            data: dataVMode,
+            borderWidth: 2,
+            pointRadius: 0,
+            borderDash: [6, 6],
+            fill: false
+          },
+          {
+            data: dataVMean,
+            borderWidth: 2,
+            pointRadius: 0,
+            borderDash: [6, 6],
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          x: {
+            type: 'linear',
+            title: { display: true, text: 'r / r\u1D66' },
+            ticks: { stepSize: 0.5 }
+          },
+          y: {
+            title: { display: true, text: 'relative probability' },
+            beginAtZero: true
+          }
+        }
+      },
+      plugins: [hydroLabels]
+    });
+
+  </script>
+
+</body>
+</html>
