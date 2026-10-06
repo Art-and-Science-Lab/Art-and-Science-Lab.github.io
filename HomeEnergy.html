@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Home Energy</title>
+
+    <link
+        rel="stylesheet"
+        href="HomeEnergy.css"
+    >
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/chart.js"
+    ></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1 id="pageTitle">Home Energy</h1>
+
+        <div class="language">
+            <button id="langJa">日本語</button>
+            <button id="langEn">English</button>
+        </div>
+    </header>
+
+
+    <nav class="period-selector">
+
+        <button
+            class="period active"
+            data-period="day"
+            id="dayButton"
+        >
+            日
+        </button>
+
+        <button
+            class="period"
+            data-period="month"
+            id="monthButton"
+        >
+            月
+        </button>
+
+        <button
+            class="period"
+            data-period="year"
+            id="yearButton"
+        >
+            年
+        </button>
+
+    </nav>
+
+
+    <div class="date-selector">
+
+        <button id="previousButton">
+            ◀
+        </button>
+
+        <div id="currentDate">
+            ----
+        </div>
+
+        <button id="nextButton">
+            ▶
+        </button>
+
+    </div>
+
+
+    <main>
+
+        <div class="chart-container">
+
+            <canvas id="energyChart"></canvas>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <div id="status"></div>
+
+    </footer>
+
+</div>
+
+
+<script src="HomeEnergy.js"></script>
+
+</body>
+</html>
