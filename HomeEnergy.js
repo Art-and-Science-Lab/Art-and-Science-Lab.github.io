@@ -71,6 +71,10 @@ selectedDate.setDate(
 
 let chart = null;
 
+// Navigation limits
+const MIN_DAY = new Date(2026, 8, 18);   // 2026-09-18
+const MIN_MONTH = new Date(2026, 0, 1);  // 2026-01
+const MIN_YEAR = 2024;
 
 /* ============================================================
    Colors
@@ -161,6 +165,7 @@ function updateDateDisplay() {
     document.getElementById(
         "currentDate"
     ).textContent = text;
+    updateNavigationButtons();
 }
 
 
@@ -624,34 +629,154 @@ function setPeriod(newPeriod) {
    Navigation
 ============================================================ */
 
-function moveDate(direction) {
+function getYesterday() {
+
+    const yesterday = new Date();
+
+    yesterday.setHours(0, 0, 0, 0);
+
+    yesterday.setDate(
+        yesterday.getDate() - 1
+    );
+
+    return yesterday;
+}
+
+
+function isDateAllowed(date) {
+
+    const yesterday = getYesterday();
+
 
     if (period === "day") {
 
-        selectedDate.setDate(
-            selectedDate.getDate()
-            + direction
-        );
-
-    } else if (period === "month") {
-
-        selectedDate.setMonth(
-            selectedDate.getMonth()
-            + direction
-        );
-
-    } else {
-
-        selectedDate.setFullYear(
-            selectedDate.getFullYear()
-            + direction
+        return (
+            date >= MIN_DAY &&
+            date <= yesterday
         );
     }
 
 
-    loadData();
+    if (period === "month") {
+
+        const value =
+            date.getFullYear() * 12 +
+            date.getMonth();
+
+        const min =
+            MIN_MONTH.getFullYear() * 12 +
+            MIN_MONTH.getMonth();
+
+        const max =
+            yesterday.getFullYear() * 12 +
+            yesterday.getMonth();
+
+        return (
+            value >= min &&
+            value <= max
+        );
+    }
+
+
+    return (
+        date.getFullYear() >= MIN_YEAR &&
+        date.getFullYear() <=
+            yesterday.getFullYear()
+    );
 }
 
+function updateNavigationButtons() {
+
+    const previous =
+        document.getElementById(
+            "previousButton"
+        );
+
+    const next =
+        document.getElementById(
+            "nextButton"
+        );
+
+
+    const previousDate =
+        new Date(selectedDate);
+
+    const nextDate =
+        new Date(selectedDate);
+
+
+    if (period === "day") {
+
+        previousDate.setDate(
+            previousDate.getDate() - 1
+        );
+
+        nextDate.setDate(
+            nextDate.getDate() + 1
+        );
+
+    } else if (period === "month") {
+
+        previousDate.setMonth(
+            previousDate.getMonth() - 1
+        );
+
+        nextDate.setMonth(
+            nextDate.getMonth() + 1
+        );
+
+    } else {
+
+        previousDate.setFullYear(
+            previousDate.getFullYear() - 1
+        );
+
+        nextDate.setFullYear(
+            nextDate.getFullYear() + 1
+        );
+    }
+
+
+    previous.disabled =
+        !isDateAllowed(previousDate);
+
+    next.disabled =
+        !isDateAllowed(nextDate);
+}
+
+function moveDate(direction) {
+
+    const newDate = new Date(selectedDate);
+
+    if (period === "day") {
+
+        newDate.setDate(
+            newDate.getDate() + direction
+        );
+
+    } else if (period === "month") {
+
+        newDate.setMonth(
+            newDate.getMonth() + direction
+        );
+
+    } else {
+
+        newDate.setFullYear(
+            newDate.getFullYear() + direction
+        );
+    }
+
+
+    if (!isDateAllowed(newDate)) {
+        return;
+    }
+
+
+    selectedDate = newDate;
+
+    loadData();
+}
 
 /* ============================================================
    Events
