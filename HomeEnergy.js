@@ -607,6 +607,11 @@ function setPeriod(newPeriod) {
 
     period = newPeriod;
 
+    // 表示期間を切り替えたら、
+    // 常に昨日を基準とした最新データへ戻す
+
+    selectedDate = getYesterday();
+
 
     document
         .querySelectorAll(
