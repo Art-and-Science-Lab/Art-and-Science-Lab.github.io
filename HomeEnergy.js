@@ -259,7 +259,8 @@ function makeChartData(rows) {
             backgroundColor:
                 COLORS.baseline,
             borderWidth: 0,
-            order: 10
+            order: 10,
+            yAxisID: "energy"
         });
     }
 
