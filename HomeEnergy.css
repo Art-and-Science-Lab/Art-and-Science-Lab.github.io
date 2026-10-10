@@ -230,30 +230,30 @@ footer {
     }
 
     .selector-row .date-selector {
-        gap: 4px;
+        gap: 5px;
         flex-shrink: 1;
         min-width: 0;
     }
 
     .selector-row #currentDate {
         min-width: 0;
-        font-size: 14px;
+        font-size: 15px;
         white-space: nowrap;
     }
 
     .selector-row .date-selector button {
-        padding: 6px;
-        font-size: 12px;
+        padding: 9px;
+        font-size: 15px;
     }
 
     .selector-row .period-selector {
-        gap: 4px;
+        gap: 5px;
         flex-shrink: 0;
     }
 
     .selector-row .period-selector button {
-        min-width: 32px;
-        padding: 6px 8px;
-        font-size: 13px;
+        min-width: 38px;
+        padding: 9px 10px;
+        font-size: 15px;
     }
 }
