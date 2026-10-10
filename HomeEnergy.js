@@ -63,6 +63,13 @@ let language =
 
 let period = "day";
 
+// 通常時のY軸上限
+const ENERGY_YMAX = {
+    day: 4,
+    month: 30,
+    year: 800
+};
+
 let selectedDate = new Date();
 
 selectedDate.setDate(
@@ -444,6 +451,23 @@ function updateSocAxis() {
         socIndex !== -1 && chart.isDatasetVisible(socIndex);
 }
 
+function updateEnergyAxis() {
+    if (!chart) return;
+
+    const fixedMax = ENERGY_YMAX[period];
+
+    const maxValue = Math.max(
+        0,
+        ...chart.data.datasets
+            .filter(dataset => dataset.yAxisID === "energy")
+            .flatMap(dataset => dataset.data)
+            .map(value => Number(value) || 0)
+    );
+
+    chart.options.scales.energy.max =
+        maxValue > fixedMax ? undefined : fixedMax;
+}
+
 function drawChart(rows) {
 
     const t = translations[language];
@@ -544,6 +568,7 @@ function drawChart(rows) {
     );
     renderLegend();
     updateSocAxis();
+    updateEnergyAxis();
     chart.update();
 }
 
