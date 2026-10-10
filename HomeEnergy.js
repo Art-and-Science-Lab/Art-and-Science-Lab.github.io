@@ -20,7 +20,7 @@ const translations = {
         import: "買電量",
         export: "売電量",
         batterySOC: "電池残量",
-        baseline: "発電基準値",
+        baseline: "発電予測値",
 
         energyAxis: "電力量 (kWh)",
         socAxis: "電池残量 (%)",
@@ -41,7 +41,7 @@ const translations = {
         import: "Grid Import",
         export: "Grid Export",
         batterySOC: "Battery SOC",
-        baseline: "Solar Baseline",
+        baseline: "Solar Forecast",
 
         energyAxis: "Energy (kWh)",
         socAxis: "Battery SOC (%)",
@@ -264,7 +264,6 @@ function makeChartData(rows) {
             backgroundColor:
                 COLORS.baseline,
             borderWidth: 0,
-            order: 10,
             yAxisID: "energy"
         });
     }
