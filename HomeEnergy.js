@@ -264,6 +264,7 @@ function makeChartData(rows) {
             backgroundColor:
                 COLORS.baseline,
             borderWidth: 0,
+            order: 10,
             yAxisID: "energy"
         });
     }
@@ -434,7 +435,12 @@ function drawChart(rows) {
 
                         labels: {
                             usePointStyle: true,
-                            padding: 18
+                            padding: 18,
+                            sort: (a, b) => {
+                                if (a.text === t.baseline) return -1;
+                                if (b.text === t.baseline) return 1;
+                                return a.datasetIndex - b.datasetIndex;
+                            }
                         }
                     }
                 },
