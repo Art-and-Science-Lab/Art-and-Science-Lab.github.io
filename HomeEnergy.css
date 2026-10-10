@@ -225,7 +225,7 @@ footer {
 @media (max-width: 700px) {
 
     .selector-row {
-        gap: 8px;
+        gap: 16px;
         flex-wrap: nowrap;
     }
 
