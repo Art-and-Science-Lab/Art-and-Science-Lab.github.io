@@ -71,6 +71,9 @@ selectedDate.setDate(
 
 let chart = null;
 
+// Keep legend selections across date, period and language changes.
+const seriesVisibility = {};
+
 // Navigation limits
 const MIN_DAY = new Date(2026, 8, 18);   // 2026-09-18
 const MIN_MONTH = new Date(2026, 0, 1);  // 2026-01
@@ -82,8 +85,8 @@ const MIN_YEAR = 2024;
 
 const COLORS = {
     solar: "#C62828",
-    batteryCharge: "#EF6C00",
-    consumption: "#F9A825",
+    batteryCharge: "#F9A825",
+    consumption: "#C5AA55",
     import: "#2E7D32",
     export: "#1565C0",
     soc: "#7B1FA2",
@@ -381,12 +384,50 @@ function makeChartData(rows) {
     );
 
 
+    // Stable identifiers independent of translated legend labels.
+    const seriesKeys = period === "year"
+        ? ["baseline", "solar", "batteryCharge", "consumption", "import", "export", "soc"]
+        : ["solar", "batteryCharge", "consumption", "import", "export", "soc"];
+    datasets.forEach((dataset, index) => {
+        dataset.seriesKey = seriesKeys[index];
+        dataset.hidden = seriesVisibility[dataset.seriesKey] === false;
+    });
+
     return {
         labels,
         datasets
     };
 }
 
+
+/* ============================================================
+   Interactive legend (HTML buttons, Chart.js visibility API)
+============================================================ */
+
+function renderLegend() {
+    const container = document.getElementById("energyLegend");
+    container.replaceChildren();
+    if (!chart) return;
+
+    chart.data.datasets.forEach((dataset, index) => {
+        const key = dataset.seriesKey;
+        const visible = chart.isDatasetVisible(index);
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = dataset.label;
+        button.style.setProperty("--series-color", COLORS[key]);
+        button.classList.toggle("off", !visible);
+        button.setAttribute("aria-pressed", String(visible));
+        button.addEventListener("click", () => {
+            const nextVisible = !chart.isDatasetVisible(index);
+            seriesVisibility[key] = nextVisible;
+            chart.setDatasetVisibility(index, nextVisible);
+            chart.update();
+            renderLegend();
+        });
+        container.appendChild(button);
+    });
+}
 
 /* ============================================================
    Chart
@@ -430,19 +471,7 @@ function drawChart(rows) {
 
                 plugins: {
 
-                    legend: {
-                        position: "top",
-
-                        labels: {
-                            usePointStyle: true,
-                            padding: 18,
-                            sort: (a, b) => {
-                                if (a.text === t.baseline) return -1;
-                                if (b.text === t.baseline) return 1;
-                                return a.datasetIndex - b.datasetIndex;
-                            }
-                        }
-                    }
+                    legend: { display: false }
                 },
 
                 scales: {
@@ -487,6 +516,7 @@ function drawChart(rows) {
             }
         }
     );
+    renderLegend();
 }
 
 
@@ -540,6 +570,7 @@ async function loadData() {
             chart.destroy();
             chart = null;
         }
+        renderLegend();
 
         status.textContent =
             translations[language]

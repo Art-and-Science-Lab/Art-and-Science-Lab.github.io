@@ -167,3 +167,32 @@ footer {
         padding: 8px;
     }
 }
+
+/* Interactive graph legend */
+.energy-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 14px;
+}
+.energy-legend button {
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 18px;
+    background: var(--series-color);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 120ms ease;
+}
+.energy-legend button.off { background: #A6A6A6; }
+.energy-legend button:focus-visible {
+    outline: 3px solid #222;
+    outline-offset: 3px;
+}
+@media (max-width: 700px) {
+    .energy-legend { gap: 7px; }
+    .energy-legend button { padding: 9px 12px; font-size: 13px; }
+}
