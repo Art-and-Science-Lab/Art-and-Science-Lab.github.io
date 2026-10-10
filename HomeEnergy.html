@@ -34,33 +34,53 @@
     </header>
 
 
-    <nav class="period-selector">
+    <div class="selector-row">
 
-        <button
-            class="period active"
-            data-period="day"
-            id="dayButton"
-        >
-            日
-        </button>
+        <div class="date-selector">
 
-        <button
-            class="period"
-            data-period="month"
-            id="monthButton"
-        >
-            月
-        </button>
+            <button id="previousButton">
+                ◀
+            </button>
 
-        <button
-            class="period"
-            data-period="year"
-            id="yearButton"
-        >
-            年
-        </button>
+            <div id="currentDate">
+                ----
+            </div>
 
-    </nav>
+            <button id="nextButton">
+                ▶
+            </button>
+
+        </div>
+
+        <nav class="period-selector">
+
+            <button
+                class="period active"
+                data-period="day"
+                id="dayButton"
+            >
+                日
+            </button>
+
+            <button
+                class="period"
+                data-period="month"
+                id="monthButton"
+            >
+                月
+            </button>
+
+            <button
+                class="period"
+                data-period="year"
+                id="yearButton"
+            >
+                年
+            </button>
+
+        </nav>
+
+    </div>
 
 
     <div class="date-selector">

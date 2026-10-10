@@ -204,3 +204,56 @@ footer {
 #energyLegend button:not(.off)[style*="#D6E6F5"] {
     color: #757575;
 }
+
+/* Date and period selectors in one row */
+
+.selector-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 20px;
+}
+
+.selector-row .date-selector,
+.selector-row .period-selector {
+    margin-bottom: 0;
+}
+
+/* Smartphone */
+
+@media (max-width: 700px) {
+
+    .selector-row {
+        gap: 8px;
+        flex-wrap: nowrap;
+    }
+
+    .selector-row .date-selector {
+        gap: 4px;
+        flex-shrink: 1;
+        min-width: 0;
+    }
+
+    .selector-row #currentDate {
+        min-width: 0;
+        font-size: 14px;
+        white-space: nowrap;
+    }
+
+    .selector-row .date-selector button {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    .selector-row .period-selector {
+        gap: 4px;
+        flex-shrink: 0;
+    }
+
+    .selector-row .period-selector button {
+        min-width: 32px;
+        padding: 6px 8px;
+        font-size: 13px;
+    }
+}
