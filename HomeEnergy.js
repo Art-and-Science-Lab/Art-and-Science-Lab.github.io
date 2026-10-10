@@ -481,8 +481,23 @@ function drawChart(rows) {
                 },
 
                 plugins: {
+                    legend: { display: false },
 
-                    legend: { display: false }
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                const digits = period === "day" ? 3 : 1;
+                                const value = context.parsed.y;
+
+                                if (value == null) {
+                                    return context.dataset.label;
+                                }
+
+                                return context.dataset.label + ": " +
+                                    Number(value).toFixed(digits);
+                            }
+                        }
+                    }
                 },
 
                 scales: {

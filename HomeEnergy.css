@@ -196,3 +196,7 @@ footer {
     .energy-legend { gap: 7px; }
     .energy-legend button { padding: 9px 12px; font-size: 13px; }
 }
+
+#energyLegend button:first-child:not(.off) {
+    color: #263238;
+}
