@@ -422,6 +422,7 @@ function renderLegend() {
             const nextVisible = !chart.isDatasetVisible(index);
             seriesVisibility[key] = nextVisible;
             chart.setDatasetVisibility(index, nextVisible);
+            updateSocAxis();
             chart.update();
             renderLegend();
         });
@@ -432,6 +433,16 @@ function renderLegend() {
 /* ============================================================
    Chart
 ============================================================ */
+function updateSocAxis() {
+    if (!chart) return;
+
+    const socIndex = chart.data.datasets.findIndex(
+        dataset => dataset.yAxisID === "soc"
+    );
+
+    chart.options.scales.soc.display =
+        socIndex !== -1 && chart.isDatasetVisible(socIndex);
+}
 
 function drawChart(rows) {
 
@@ -517,8 +528,9 @@ function drawChart(rows) {
         }
     );
     renderLegend();
+    updateSocAxis();
+    chart.update();
 }
-
 
 /* ============================================================
    Load
