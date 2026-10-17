@@ -81,10 +81,10 @@ const MIN_YEAR = 2024;
 
 const COLORS = {
     solar: "#C62828",
-    batteryCharge: "#F9A825",
-    consumption: "#C5AA55",
-    import: "#2E7D32",
-    export: "#1565C0",
+    consumption: "#F9A825",
+    import: "#C5AA55",
+    export: "#2E7D32",
+    batteryCharge: "#1565C0",
     soc: "#7B1FA2",
     baseline: "#D6E6F5"
 };
@@ -233,108 +233,49 @@ function makeChartData(rows) {
             backgroundColor: COLORS.baseline,
             borderWidth: 0,
             order: 10,
-            yAxisID: "energy"
+            yAxisID: "energy",
+            seriesKey: "baseline"
         });
     }
 
-    datasets.push(
-        {
-            label: t.solar,
-            data: rows.map(row =>
-                numberValue(row["太陽光発電量"])
-            ),
-            borderColor: COLORS.solar,
-            backgroundColor: COLORS.solar,
-            borderWidth: 3,
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "energy"
-        },
-        {
-            label: t.batteryCharge,
-            data: rows.map(row =>
-                numberValue(row["蓄電池充電量"])
-            ),
-            borderColor: COLORS.batteryCharge,
-            backgroundColor: COLORS.batteryCharge,
-            borderWidth: 3,
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "energy"
-        },
-        {
-            label: t.consumption,
-            data: rows.map(row =>
-                numberValue(row["消費電力量"])
-            ),
-            borderColor: COLORS.consumption,
-            backgroundColor: COLORS.consumption,
-            borderWidth: 3,
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "energy"
-        },
-        {
-            label: t.import,
-            data: rows.map(row =>
-                numberValue(row["買電量"])
-            ),
-            borderColor: COLORS.import,
-            backgroundColor: COLORS.import,
-            borderWidth: 3,
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "energy"
-        },
-        {
-            label: t.export,
-            data: rows.map(row =>
-                numberValue(row["売電量"])
-            ),
-            borderColor: COLORS.export,
-            backgroundColor: COLORS.export,
-            borderWidth: 3,
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "energy"
-        },
-        {
-            label: t.batterySOC,
-            data: rows.map(row =>
-                numberValue(row["電池残量"])
-            ),
-            borderColor: COLORS.soc,
-            backgroundColor: COLORS.soc,
-            borderWidth: 3,
-            borderDash: [8, 6],
-            pointRadius: 2,
-            tension: 0,
-            yAxisID: "soc"
-        }
-    );
+    const series = [
+        ["solar", "太陽光発電量"],
+        ["consumption", "消費電力量"],
+        ["import", "買電量"],
+        ["export", "売電量"],
+        ["batteryCharge", "蓄電池充電量"],
+        ["soc", "電池残量"]
+    ];
 
-    const seriesKeys = period === "year"
-        ? [
-            "baseline",
-            "solar",
-            "batteryCharge",
-            "consumption",
-            "import",
-            "export",
-            "soc"
-        ]
-        : [
-            "solar",
-            "batteryCharge",
-            "consumption",
-            "import",
-            "export",
-            "soc"
-        ];
+    const labelsByKey = {
+        solar: t.solar,
+        consumption: t.consumption,
+        import: t.import,
+        export: t.export,
+        batteryCharge: t.batteryCharge,
+        soc: t.batterySOC
+    };
 
-    datasets.forEach((dataset, index) => {
-        dataset.seriesKey = seriesKeys[index];
+    series.forEach(([key, column]) => {
+        const isSOC = key === "soc";
 
+        datasets.push({
+            label: labelsByKey[key],
+            data: rows.map(row =>
+                numberValue(row[column])
+            ),
+            borderColor: COLORS[key],
+            backgroundColor: COLORS[key],
+            borderWidth: 3,
+            ...(isSOC ? { borderDash: [8, 6] } : {}),
+            pointRadius: 2,
+            tension: 0,
+            yAxisID: isSOC ? "soc" : "energy",
+            seriesKey: key
+        });
+    });
+
+    datasets.forEach(dataset => {
         dataset.hidden =
             seriesVisibility[dataset.seriesKey] === false;
     });
@@ -344,7 +285,6 @@ function makeChartData(rows) {
         datasets
     };
 }
-
 /* ============================================================
    Interactive legend
 ============================================================ */
@@ -537,10 +477,10 @@ function drawChart(rows) {
 
 const TABLE_COLUMNS = [
     ["solar", "太陽光発電量"],
-    ["batteryCharge", "蓄電池充電量"],
     ["consumption", "消費電力量"],
     ["import", "買電量"],
     ["export", "売電量"],
+    ["batteryCharge", "蓄電池充電量"],
     ["batterySOC", "電池残量"]
 ];
 
