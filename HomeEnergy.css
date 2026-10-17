@@ -257,3 +257,84 @@ footer {
         font-size: 15px;
     }
 }
+
+/* Graph / Table toggle */
+
+#viewToggleButton {
+    margin-left: 12px;
+    min-width: 70px;
+}
+
+@media (max-width: 700px) {
+    #viewToggleButton {
+        margin-left: 8px;
+        min-width: 46px;
+        padding: 9px 10px;
+        font-size: 15px;
+    }
+}
+
+
+/* Energy data table */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+#energyTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+#energyTable th,
+#energyTable td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: right;
+    white-space: nowrap;
+}
+
+#energyTable th:first-child,
+#energyTable td:first-child {
+    text-align: center;
+}
+
+#energyTable thead th {
+    background: #f0f3f6;
+    font-weight: 600;
+}
+
+#energyTable tbody tr:nth-child(even) {
+    background: #fafbfc;
+}
+
+#energyTable tbody tr.summary-row {
+    background: #edf2f7;
+    font-weight: 600;
+}
+
+#energyTable tbody tr.summary-row:last-of-type {
+    border-bottom: 2px solid #aab6c2;
+}
+
+@media (max-width: 700px) {
+    .table-container {
+        padding: 8px;
+    }
+
+    #energyTable {
+        font-size: 12px;
+    }
+
+    #energyTable th,
+    #energyTable td {
+        padding: 8px 10px;
+    }
+}

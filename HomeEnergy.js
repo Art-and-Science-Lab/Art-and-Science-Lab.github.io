@@ -1,4 +1,3 @@
-
 const DATA_ROOT = "data/HomeEnergy";
 
 /* ============================================================
@@ -20,7 +19,8 @@ const translations = {
         baseline: "発電予測値",
         energyAxis: "電力量 (kWh)",
         socAxis: "電池残量 (%)",
-        noData: "データがありません"
+        noData: "データがありません",
+        table: "表", graph: "グラフ", hour: "時間", average: "平均値", minimum: "最小値", maximum: "最大値"
     },
 
     en: {
@@ -37,7 +37,8 @@ const translations = {
         baseline: "Solar Forecast",
         energyAxis: "Energy (kWh)",
         socAxis: "Battery SOC (%)",
-        noData: "No data available"
+        noData: "No data available",
+        table: "Table", graph: "Graph", hour: "Hour", average: "Average", minimum: "Minimum", maximum: "Maximum"
     }
 };
 
@@ -63,6 +64,8 @@ let selectedDate = null;
 let maxAvailableDate = null;
 
 let chart = null;
+let viewMode = "graph";
+let currentRows = null;
 
 // 凡例の表示状態を維持
 const seriesVisibility = {};
@@ -529,6 +532,193 @@ function drawChart(rows) {
 }
 
 /* ============================================================
+   Table view (independent of Chart.js)
+============================================================ */
+
+const TABLE_COLUMNS = [
+    ["solar", "太陽光発電量"],
+    ["batteryCharge", "蓄電池充電量"],
+    ["consumption", "消費電力量"],
+    ["import", "買電量"],
+    ["export", "売電量"],
+    ["batterySOC", "電池残量"]
+];
+
+function tableColumns() {
+    return period === "year"
+        ? [["baseline", "発電基準値"], ...TABLE_COLUMNS]
+        : TABLE_COLUMNS;
+}
+
+function isTableObservation(row, column, index) {
+    if (!selectedDate || !maxAvailableDate) return false;
+
+    const year = selectedDate.getFullYear();
+    const month = selectedDate.getMonth();
+    const key = period === "day" ? "時間" : period === "month" ? "日" : "月";
+    const position = Number(row[key]);
+    if (!Number.isInteger(position)) return false;
+
+    if (period === "day") return position >= 0 && position <= 23;
+
+    if (period === "month") {
+        const lastDay = new Date(year, month + 1, 0).getDate();
+        const limit = year === maxAvailableDate.getFullYear() &&
+                      month === maxAvailableDate.getMonth()
+            ? maxAvailableDate.getDate()
+            : lastDay;
+        if (position < 1 || position > limit) return false;
+
+        // 設備設置前は太陽光・蓄電池関連の0を観測値とみなさない。
+        if (["solar", "batteryCharge", "export", "batterySOC"].includes(column)) {
+            return new Date(year, month, position) >= MIN_DAY;
+        }
+        return true;
+    }
+
+    if (position < 1 || position > 12) return false;
+    const isCurrentYear = year === maxAvailableDate.getFullYear();
+
+    // 発電予測値は年に関係なく12か月すべてを統計対象とする。
+    if (column === "baseline") return true;
+    if (isCurrentYear && position >= maxAvailableDate.getMonth() + 1) return false;
+
+    if (["solar", "batteryCharge", "export", "batterySOC"].includes(column)) {
+        return new Date(year, position, 0) >= MIN_DAY;
+    }
+    return true;
+}
+
+function formatTableValue(value, column) {
+    if (value === "" || value === undefined || value === null) return "—";
+
+    const n = Number(value);
+    if (!Number.isFinite(n)) return "—";
+
+    if (column === "batterySOC" || column === "baseline") {
+        return n.toFixed(1);
+    }
+
+    return n.toFixed(period === "day" ? 3 : 1);
+}
+
+function drawTable(rows) {
+    const table = document.getElementById("energyTable");
+    if (!table) return;
+
+    const t = translations[language];
+    const columns = tableColumns();
+    const key = period === "day" ? "時間" : period === "month" ? "日" : "月";
+
+    table.replaceChildren();
+
+    const thead = table.createTHead();
+    const heading = thead.insertRow();
+
+    const first = document.createElement("th");
+    first.textContent = period === "day" ? t.hour : period === "month" ? t.day : t.month;
+    first.scope = "col";
+    heading.appendChild(first);
+
+    for (const [name] of columns) {
+        const th = document.createElement("th");
+        th.scope = "col";
+        th.textContent = t[name];
+        heading.appendChild(th);
+    }
+
+    const tbody = table.createTBody();
+    const summaryLabels = [t.average, t.minimum, t.maximum];
+
+    for (let stat = 0; stat < 3; stat++) {
+        const tr = tbody.insertRow();
+        tr.className = "summary-row";
+
+        const label = tr.insertCell();
+        label.textContent = summaryLabels[stat];
+
+        for (const [name, csvName] of columns) {
+            const values = rows
+                .filter((row, index) => isTableObservation(row, name, index))
+                .map(row => row[csvName])
+                .filter(value =>
+                    value !== "" &&
+                    value != null &&
+                    Number.isFinite(Number(value))
+                )
+                .map(Number);
+
+            const td = tr.insertCell();
+
+            const value = values.length === 0 ? null :
+                stat === 0
+                    ? values.reduce((a, b) => a + b, 0) / values.length
+                    : stat === 1
+                        ? Math.min(...values)
+                        : Math.max(...values);
+
+            td.textContent =
+                value === null ? "—" : formatTableValue(value, name);
+        }
+    }
+
+    for (const row of rows) {
+        const tr = tbody.insertRow();
+
+        const label = tr.insertCell();
+        label.textContent = row[key] ?? "";
+
+        for (const [name, csvName] of columns) {
+            const td = tr.insertCell();
+            td.textContent = formatTableValue(row[csvName], name);
+        }
+    }
+}
+
+function updateView() {
+    const tableContainer =
+        document.getElementById("energyTableContainer");
+
+    const chartContainer =
+        document.querySelector(".chart-container");
+
+    const legend =
+        document.getElementById("energyLegend");
+
+    const toggle =
+        document.getElementById("viewToggleButton");
+
+    const isTable = viewMode === "table";
+
+    if (tableContainer) {
+        tableContainer.style.display = isTable ? "" : "none";
+    }
+
+    if (chartContainer) {
+        chartContainer.style.display = isTable ? "none" : "";
+    }
+
+    if (legend) {
+        legend.style.display = isTable ? "none" : "";
+    }
+
+    if (toggle) {
+        toggle.textContent =
+            translations[language][isTable ? "graph" : "table"];
+
+        toggle.setAttribute("aria-pressed", String(isTable));
+    }
+
+    if (isTable && currentRows) {
+        drawTable(currentRows);
+    }
+
+    if (!isTable && chart) {
+        chart.resize();
+    }
+}
+
+/* ============================================================
    Load CSV
 ============================================================ */
 
@@ -555,9 +745,16 @@ async function loadData() {
         const text = await response.text();
         const rows = parseCSV(text);
 
+        currentRows = rows;
         drawChart(rows);
+        updateView();
 
     } catch (error) {
+        currentRows = null;
+
+        const table = document.getElementById("energyTable");
+        if (table) table.replaceChildren();
+
         if (chart) {
             chart.destroy();
             chart = null;
@@ -602,6 +799,8 @@ function updateLanguage() {
         "active",
         language === "en"
     );
+
+    updateView();
 
     if (selectedDate) {
         loadData();
@@ -887,6 +1086,13 @@ document
             updateLanguage();
         }
     );
+
+document
+    .getElementById("viewToggleButton")
+    .addEventListener("click", () => {
+        viewMode = viewMode === "graph" ? "table" : "graph";
+        updateView();
+    });
 
 /* ============================================================
    Start
