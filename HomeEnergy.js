@@ -38,7 +38,7 @@ const translations = {
         energyAxis: "Energy (kWh)",
         socAxis: "Battery SOC (%)",
         noData: "No data available",
-        table: "Table", graph: "Graph", hour: "Hour", average: "Average", minimum: "Minimum", maximum: "Maximum"
+        table: "Table", graph: "Graph", hour: "Hour", average: "Ave", minimum: "Min", maximum: "Max"
     }
 };
 
@@ -721,14 +721,18 @@ function updateLanguage() {
     document.getElementById("pageTitle").textContent =
         t.title;
 
+    const shortEnglish =
+        language === "en" &&
+        window.matchMedia("(max-width: 600px)").matches;
+
     document.getElementById("dayButton").textContent =
-        t.day;
+        shortEnglish ? "D" : t.day;
 
     document.getElementById("monthButton").textContent =
-        t.month;
+        shortEnglish ? "M" : t.month;
 
     document.getElementById("yearButton").textContent =
-        t.year;
+        shortEnglish ? "Y" : t.year;
 
     document.getElementById("langJa").classList.toggle(
         "active",
