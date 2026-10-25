@@ -362,3 +362,15 @@ mjx-container[display="true"]{
   font-size: 0.9rem;
   color: #555;
 }
+
+/* MathJaxの数式の上下余白を調整 */
+.eq {
+    line-height: 1.4;
+    padding: 2px 0;
+    overflow: visible;
+}
+
+.eq mjx-container[display="true"] {
+    margin: 0.2em 0 !important;
+    overflow: visible;
+}
