@@ -733,6 +733,9 @@ function updateLanguage() {
 
     document.getElementById("yearButton").textContent =
         shortEnglish ? "Y" : t.year;
+    
+    document.getElementById("allButton").textContent =
+    language === "ja" ? "すべて" : "ALL";
 
     document.getElementById("langJa").classList.toggle(
         "active",
