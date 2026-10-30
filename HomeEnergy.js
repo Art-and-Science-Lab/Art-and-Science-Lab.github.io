@@ -131,6 +131,8 @@ function csvFile() {
         );
     }
 
+    if (period === "all") return `${DATA_ROOT}/All/All.csv`;
+
     return `${DATA_ROOT}/Year/${d.year}.csv`;
 }
 
@@ -148,6 +150,8 @@ function updateDateDisplay() {
         text = `${d.year}-${pad(d.month)}-${pad(d.day)}`;
     } else if (period === "month") {
         text = `${d.year}-${pad(d.month)}`;
+    } else if (period === "all") {
+        text = `${MIN_YEAR}–${maxAvailableDate.getFullYear()}`;
     } else {
         text = `${d.year}`;
     }
@@ -217,13 +221,13 @@ function makeChartData(rows) {
     } else if (period === "month") {
         xColumn = "日";
     } else {
-        xColumn = "月";
+        xColumn = period === "all" ? "年" : "月";
     }
 
     const labels = rows.map(row => row[xColumn]);
     const datasets = [];
 
-    if (period === "year") {
+    if (period === "year" || period === "all") {
         datasets.push({
             type: "bar",
             label: t.baseline,
@@ -262,7 +266,8 @@ function makeChartData(rows) {
         datasets.push({
             label: labelsByKey[key],
             data: rows.map(row =>
-                numberValue(row[column])
+                period === "all" && isSOC && row[column] === ""
+                    ? null : numberValue(row[column])
             ),
             borderColor: COLORS[key],
             backgroundColor: COLORS[key],
@@ -353,6 +358,10 @@ function updateEnergyAxis() {
     if (!chart) return;
 
     const fixedMax = ENERGY_YMAX[period];
+    if (fixedMax === undefined) {
+        chart.options.scales.energy.max = undefined;
+        return;
+    }
 
     const maxValue = Math.max(
         0,
@@ -485,13 +494,18 @@ const TABLE_COLUMNS = [
 ];
 
 function tableColumns() {
-    return period === "year"
+    return (period === "year" || period === "all")
         ? [["baseline", "発電基準値"], ...TABLE_COLUMNS]
         : TABLE_COLUMNS;
 }
 
 function isTableObservation(row, column, index) {
     if (!selectedDate || !maxAvailableDate) return false;
+
+    if (period === "all") {
+        return column === "baseline" ||
+            (column !== "batterySOC" || row["電池残量"] !== "");
+    }
 
     const year = selectedDate.getFullYear();
     const month = selectedDate.getMonth();
@@ -548,7 +562,7 @@ function drawTable(rows) {
 
     const t = translations[language];
     const columns = tableColumns();
-    const key = period === "day" ? "時間" : period === "month" ? "日" : "月";
+    const key = period === "day" ? "時間" : period === "month" ? "日" : period === "all" ? "年" : "月";
 
     table.replaceChildren();
 
@@ -556,7 +570,7 @@ function drawTable(rows) {
     const heading = thead.insertRow();
 
     const first = document.createElement("th");
-    first.textContent = period === "day" ? t.hour : period === "month" ? t.day : t.month;
+    first.textContent = period === "day" ? t.hour : period === "month" ? t.day : period === "all" ? (language === "ja" ? "年" : "Year") : t.month;
     first.scope = "col";
     heading.appendChild(first);
 
@@ -921,6 +935,12 @@ function updateNavigationButtons() {
     const next =
         document.getElementById("nextButton");
 
+    if (period === "all") {
+        previous.disabled = true;
+        next.disabled = true;
+        return;
+    }
+
     const previousDate = new Date(selectedDate);
     const nextDate = new Date(selectedDate);
 
@@ -960,6 +980,7 @@ function updateNavigationButtons() {
 }
 
 function moveDate(direction) {
+    if (period === "all") return;
     const newDate = new Date(selectedDate);
 
     if (period === "day") {
