@@ -261,19 +261,20 @@ footer {
 /* Graph / Table toggle */
 
 #viewToggleButton {
-    margin-left: 12px;
+    margin-left: 0;
+    margin-right: 16px;
     min-width: 70px;
 }
 
 @media (max-width: 700px) {
     #viewToggleButton {
-        margin-left: 8px;
+        margin-left: 0;
+        margin-right: 10px;
         min-width: 46px;
-        padding: 9px 10px;
-        font-size: 15px;
+        padding: 6px 9px;
+        font-size: 12px;
     }
 }
-
 
 /* Energy data table */
 

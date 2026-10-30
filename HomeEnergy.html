@@ -28,11 +28,18 @@
         <h1 id="pageTitle">Home Energy</h1>
 
         <div class="language">
+            <button
+                id="viewToggleButton"
+                type="button"
+                style="margin-right: 16px;"
+            >
+                表
+            </button>
+
             <button id="langJa">日本語</button>
             <button id="langEn">English</button>
         </div>
     </header>
-
 
     <div class="selector-row">
 
@@ -79,10 +86,12 @@
             </button>
 
             <button
-                id="viewToggleButton"
+                class="period"
+                data-period="all"
+                id="allButton"
                 type="button"
             >
-                表
+                すべて
             </button>
 
         </nav>
